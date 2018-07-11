@@ -7,6 +7,7 @@ package br.dcc.ufla.ppoo.learnGeometry.gui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -81,6 +82,7 @@ public class TelaPrincipal extends JFrame {
         lbInicial.setFont(new Font("Dialog", Font.PLAIN, 50));
         
         btnIniciar = new JButton("Iniciar");
+        btnIniciar.setPreferredSize(new Dimension(100, 40));
         btnIniciar.setBackground(Color.GREEN);
         btnIniciar.setForeground(Color.WHITE);
         btnIniciar.addActionListener(new ActionListener() {

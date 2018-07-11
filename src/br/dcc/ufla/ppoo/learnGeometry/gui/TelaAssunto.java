@@ -7,6 +7,7 @@ package br.dcc.ufla.ppoo.learnGeometry.gui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -60,6 +61,7 @@ public class TelaAssunto extends JFrame {
         lbTexto.setFont(new Font("SansSerif", Font.PLAIN, 30));
         
         btnArea = new JButton("Area");
+        btnArea.setPreferredSize(new Dimension(150, 40));
         btnArea.setBackground(Color.GREEN);
         btnArea.setForeground(Color.WHITE);
         btnArea.addActionListener(new ActionListener() {
@@ -70,6 +72,7 @@ public class TelaAssunto extends JFrame {
         });
         
         btnVolume = new JButton("Volume");
+        btnVolume.setPreferredSize(new Dimension(150, 40));
         btnVolume.setForeground(Color.WHITE);
         btnVolume.setBackground(Color.GREEN);
         btnVolume.addActionListener(new ActionListener() {
@@ -80,6 +83,7 @@ public class TelaAssunto extends JFrame {
         });
         
         btnTeorema = new JButton("Teoremas/Leis");
+        btnTeorema.setPreferredSize(new Dimension(150, 40));
         btnTeorema.setBackground(Color.GREEN);
         btnTeorema.setForeground(Color.WHITE);
         btnTeorema.addActionListener(new ActionListener() {
@@ -102,7 +106,9 @@ public class TelaAssunto extends JFrame {
     }
     
     private void criarTelaAreas() {
-        
+        JFrame telaAreas = new TelaAreasInicial(this.getTitle());
+        telaAreas.setLocationRelativeTo(this);
+        telaAreas.setVisible(true);
     }
     
     private void criarTelaVolume() {
