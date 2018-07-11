@@ -12,6 +12,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
@@ -58,9 +60,12 @@ public class TelaPrincipal extends JFrame {
 
         // Inicia o relógio da tela
         //iniciarRelogio();
-        //setSize(650, 500);
+        setSize(750, 650);
         // Redimensiona automaticamente a tela, com base nos componentes existentes na mesma
-        pack();
+        //pack();
+        
+        // Abrindo a tela no centro do screen
+        setLocationRelativeTo(null);
     }
     
     private void construirTela(){
@@ -76,11 +81,26 @@ public class TelaPrincipal extends JFrame {
         lbInicial.setFont(new Font("Dialog", Font.PLAIN, 50));
         
         btnIniciar = new JButton("Iniciar");
+        btnIniciar.setBackground(Color.GREEN);
+        btnIniciar.setForeground(Color.WHITE);
+        btnIniciar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                criarProximaTela();
+            }
+        });
         
         adicionarComponente(lbImagenInicial, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 0, 0, 4, 4);
         adicionarComponente(lbInicial, GridBagConstraints.CENTER, GridBagConstraints.NONE, 6, 0, 4, 2);
         adicionarComponente(btnIniciar, GridBagConstraints.EAST, GridBagConstraints.NONE, 8, 0, 4, 3);
         
+    }
+    
+    private void criarProximaTela() {
+        this.setVisible(false);
+        JFrame telaAssunto = new TelaAssunto("Learn Geometry");
+        telaAssunto.setLocationRelativeTo(this);
+        telaAssunto.setVisible(true);
     }
     
     
