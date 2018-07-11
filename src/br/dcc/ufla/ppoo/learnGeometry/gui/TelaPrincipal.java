@@ -79,7 +79,7 @@ public class TelaPrincipal extends JFrame {
         
         lbImagenInicial = new JLabel(new ImageIcon(getClass().getResource("../imagens/cubo.gif")));
         lbInicial = new JLabel("Estudando Geometria");
-        lbInicial.setFont(new Font("Dialog", Font.PLAIN, 50));
+        lbInicial.setFont(new Font("Courier", Font.PLAIN, 50));
         
         btnIniciar = new JButton("Iniciar");
         btnIniciar.setPreferredSize(new Dimension(100, 40));

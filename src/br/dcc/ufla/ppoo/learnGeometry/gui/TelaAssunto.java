@@ -16,6 +16,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -106,7 +107,7 @@ public class TelaAssunto extends JFrame {
     }
     
     private void criarTelaAreas() {
-        JFrame telaAreas = new TelaAreasInicial(this.getTitle());
+        JDialog telaAreas = new TelaAreasInicial(this, this.getTitle());
         telaAreas.setLocationRelativeTo(this);
         telaAreas.setVisible(true);
     }
