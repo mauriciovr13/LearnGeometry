@@ -103,16 +103,24 @@ public class TelaAssunto extends JFrame {
     }
     
     private void criarTelaTeorema() {
-        dispose();
+        JFrame telaTeorema = new TelaTeoremaInicial(this, this.getTitle());
+        telaTeorema.setLocationRelativeTo(null);
+        setVisible(false);
+        telaTeorema.setVisible(true);
     }
     
     private void criarTelaAreas() {
-        JDialog telaAreas = new TelaAreasInicial(this, this.getTitle());
-        telaAreas.setLocationRelativeTo(this);
-        telaAreas.setVisible(true);
+        JFrame telaArea = new TelaAreaInicial(this, this.getTitle());
+        telaArea.setLocationRelativeTo(null);
+        setVisible(false);
+        telaArea.setVisible(true);
     }
     
     private void criarTelaVolume() {
+        JFrame telaVolume = new TelaVolumeInicial(this, this.getTitle());
+        telaVolume.setLocationRelativeTo(null);
+        setVisible(false);
+        telaVolume.setVisible(true);
         
     }
     
@@ -127,8 +135,6 @@ public class TelaAssunto extends JFrame {
         gbl.setConstraints(comp, gbc); // adiciona o componente "comp" ao layout com as restrições previamente especificadas
         add(comp); // efetivamente insere o componente na tela
     }
-    
-    
-    
+  
 }
 

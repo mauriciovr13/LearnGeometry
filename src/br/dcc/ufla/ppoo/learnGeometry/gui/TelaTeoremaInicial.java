@@ -1,51 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.event.AncestorListener;
 
-/**
- *
- * @author aluno
- */
-public class TelaAreasInicial extends JDialog {
-    
+public class TelaTeoremaInicial extends JFrame {
     private GridBagLayout gbl;
     private GridBagConstraints gbc;
     
     private JButton btnVoltar;
     private JButton btnIniciar;
     
-    private JLabel lbArea;
-    private JLabel lbIntro;
+    private JLabel lbTeorema
+;    private JLabel lbIntro;
     
-    private Frame telaAnterior;
+    private JFrame telaAnterior;
 
-    public TelaAreasInicial(Frame frame, String string) {
-        super(frame, string);
+    public TelaTeoremaInicial(JFrame frame, String string) {
+        super(string);
         telaAnterior = frame;
         
         // Define que fechar a janela, a execução aplicação será encerrada
         //setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Evita que a tela possa ser redimensionada pelo usuário
         setResizable(false);
@@ -69,9 +55,10 @@ public class TelaAreasInicial extends JDialog {
         gbc = new GridBagConstraints();
         setLayout(gbl);
         
-        lbArea = new JLabel("Área");
-        lbArea.setFont(new Font("Courier", Font.PLAIN, 50));
-        lbIntro = new JLabel("Nesta sessão haverá um teste referente ao reconhecimento\ndas fórmulas de áres geométricas.");
+        lbTeorema = new JLabel("Teorema/Leis");
+        lbTeorema.setFont(new Font("Courier", Font.PLAIN, 50));
+        lbIntro = new JLabel("Nesta sessão haverá um teste referente ao\n" +
+                                "reconhecimento dos Teoremas e Leis na geometria.");
         //Intro.setFont(new Font("Courier", Font.PLAIN, 20));
         
         btnVoltar = new JButton("Voltar");
@@ -90,7 +77,7 @@ public class TelaAreasInicial extends JDialog {
         btnIniciar.setBackground(Color.GREEN);
         btnIniciar.setForeground(Color.WHITE);
         
-        adicionarComponente(lbArea, GridBagConstraints.WEST, GridBagConstraints.NONE, 0, 0, 1, 1);
+        adicionarComponente(lbTeorema, GridBagConstraints.WEST, GridBagConstraints.NONE, 0, 0, 1, 1);
         adicionarComponente(lbIntro, GridBagConstraints.WEST, GridBagConstraints.BOTH, 1, 0, 1, 1);
         adicionarComponente(btnVoltar, GridBagConstraints.WEST, GridBagConstraints.NONE, 2, 0, 1, 1);
         adicionarComponente(btnIniciar, GridBagConstraints.WEST, GridBagConstraints.NONE, 3, 0, 1, 1);
@@ -118,4 +105,5 @@ public class TelaAreasInicial extends JDialog {
     }
 
     
+
 }

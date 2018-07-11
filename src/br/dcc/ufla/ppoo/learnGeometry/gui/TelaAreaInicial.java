@@ -9,49 +9,46 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.event.AncestorListener;
 
-
-public class TelaPrincipal extends JFrame {
+/**
+ *
+ * @author aluno
+ */
+public class TelaAreaInicial extends JFrame {
     
-    // Componentes referentes ao layout da tela
-    private GridBagConstraints gbc;
     private GridBagLayout gbl;
+    private GridBagConstraints gbc;
     
-    private JLabel lbImagenInicial;
-    private JLabel lbInicial;
-    private JLabel lbVazio;
-    
+    private JButton btnVoltar;
     private JButton btnIniciar;
     
-    public TelaPrincipal() {
-        // Define o título da tela
-        super("Learn Geometry");
-        
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we) {
-                //confirmarSaida();
-            }
-        });
+    private JLabel lbArea;
+    private JLabel lbIntro;
+    
+    private JFrame telaAnterior;
 
+    public TelaAreaInicial(JFrame frame, String string) {
+        super(string);
+        telaAnterior = frame;
+        
         // Define que fechar a janela, a execução aplicação será encerrada
         //setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Evita que a tela possa ser redimensionada pelo usuário
-        setResizable(false);
+        setResizable(true);
 
         // Invoca o método que efetivamente constrói a tela
         construirTela();
@@ -62,47 +59,48 @@ public class TelaPrincipal extends JFrame {
         // Redimensiona automaticamente a tela, com base nos componentes existentes na mesma
         //pack();
         
-        // Abrindo a tela no centro do screen
-        setLocationRelativeTo(null);
+        
     }
     
-    private void construirTela(){
-        setBackground(Color.WHITE);
-        gbc = new GridBagConstraints();
+    private void construirTela() {
         gbl = new GridBagLayout();
+        gbc = new GridBagConstraints();
         setLayout(gbl);
         
-        lbVazio = new JLabel(" ");
-        
-        lbImagenInicial = new JLabel(new ImageIcon(getClass().getResource("../imagens/cubo.gif")));
-        lbInicial = new JLabel("Estudando Geometria");
-        lbInicial.setFont(new Font("Courier", Font.PLAIN, 50));
-        
-        btnIniciar = new JButton("Iniciar");
-        btnIniciar.setPreferredSize(new Dimension(100, 40));
-        btnIniciar.setBackground(Color.GREEN);
-        btnIniciar.setForeground(Color.WHITE);
-        btnIniciar.addActionListener(new ActionListener() {
+        lbArea = new JLabel("Área");
+        lbArea.setFont(new Font("Courier", Font.PLAIN, 50));
+        lbIntro = new JLabel("Nesta sessão haverá um teste referente ao reconhecimento\ndas fórmulas de áres geométricas.");
+        //Intro.setFont(new Font("Courier", Font.PLAIN, 20));
+        btnVoltar = new JButton("Voltar");
+        btnVoltar.setPreferredSize(new Dimension(100, 40));
+        btnVoltar.setBackground(Color.RED);
+        btnVoltar.setForeground(Color.WHITE);
+        btnVoltar.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                criarProximaTela();
+            public void actionPerformed(ActionEvent ae) {
+                reabrirTelaAnterior();
             }
         });
         
-        adicionarComponente(lbImagenInicial, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 0, 0, 4, 4);
-        adicionarComponente(lbInicial, GridBagConstraints.CENTER, GridBagConstraints.NONE, 6, 0, 4, 2);
-        adicionarComponente(btnIniciar, GridBagConstraints.EAST, GridBagConstraints.NONE, 8, 0, 4, 3);
+        btnIniciar =  new JButton("Iniciar");
+        btnIniciar.setPreferredSize(new Dimension(100, 40));
+        btnIniciar.setBackground(Color.GREEN);
+        btnIniciar.setForeground(Color.WHITE);
+        
+        adicionarComponente(lbArea, GridBagConstraints.WEST, GridBagConstraints.NONE, 0, 0, 1, 1);
+        adicionarComponente(lbIntro, GridBagConstraints.WEST, GridBagConstraints.NONE, 1, 0, 1, 3);
+        adicionarComponente(btnVoltar, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 0, 1, 1);
+        adicionarComponente(btnIniciar, GridBagConstraints.WEST, GridBagConstraints.NONE, 5, 0, 1, 1);
+
+        
         
     }
     
-    private void criarProximaTela() {
-        this.setVisible(false);
-        JFrame telaAssunto = new TelaAssunto("Learn Geometry");
-        telaAssunto.setLocationRelativeTo(null);
-        telaAssunto.setVisible(true);
+    private void reabrirTelaAnterior() {
+        this.dispose();
+        telaAnterior.setVisible(true);
+        
     }
-    
-    
     
     private void adicionarComponente(Component comp, int anchor, int fill, int linha, int coluna, int larg, int alt) {
         gbc.anchor = anchor; // posicionamento do componente na tela (esquerda, direita, centralizado, etc)
@@ -112,12 +110,9 @@ public class TelaPrincipal extends JFrame {
         gbc.gridwidth = larg; // quantidade de colunas do grid que o componente irá ocupar
         gbc.gridheight = alt; // quantidade de linhas do grid que o componente irá ocupar
         gbc.insets = new Insets(3, 3, 3, 3); // espaçamento (em pixels) entre os componentes da tela
-        gbl.setConstraints(comp, gbc); // adiciona o componente "comp" ao layout com as restrições previamente especificadas
+        gbl.setConstraints(comp, gbc); // adiciona o componente "comp" ao layout com as restriçõs previamente especificadas
         add(comp); // efetivamente insere o componente na tela
     }
-    
-    public static void main(String[] args) {
-        new TelaPrincipal().setVisible(true);
-    }
+
     
 }
