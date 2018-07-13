@@ -5,6 +5,7 @@
  */
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
+import br.dcc.ufla.ppoo.learnGeometry.pergunta.Pergunta;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -16,6 +17,7 @@ import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -36,6 +38,8 @@ public class TelaAreaInicial extends JFrame {
     
     private JLabel lbArea;
     private JLabel lbIntro;
+    
+    private ArrayList<Pergunta> perguntasAreas;
     
     private JFrame telaAnterior;
 
@@ -59,6 +63,8 @@ public class TelaAreaInicial extends JFrame {
         // Redimensiona automaticamente a tela, com base nos componentes existentes na mesma
         //pack();
         
+        //Metodo que ler o arquivo binario com as perguntas sobre area
+        carregaPerguntas();        
         
     }
     
@@ -86,14 +92,23 @@ public class TelaAreaInicial extends JFrame {
         btnIniciar.setPreferredSize(new Dimension(100, 40));
         btnIniciar.setBackground(Color.GREEN);
         btnIniciar.setForeground(Color.WHITE);
+        btnIniciar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                construirTelaPerguntas();
+            }
+        });
         
         adicionarComponente(lbArea, GridBagConstraints.WEST, GridBagConstraints.NONE, 0, 0, 1, 1);
         adicionarComponente(lbIntro, GridBagConstraints.WEST, GridBagConstraints.NONE, 1, 0, 1, 3);
         adicionarComponente(btnVoltar, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 0, 1, 1);
         adicionarComponente(btnIniciar, GridBagConstraints.WEST, GridBagConstraints.NONE, 5, 0, 1, 1);
-
         
-        
+    }
+    
+    private void construirTelaPerguntas() {
+        new TelaPergunta(this.getTitle(), perguntasAreas).setVisible(true);
+        dispose();
     }
     
     private void reabrirTelaAnterior() {
@@ -114,5 +129,8 @@ public class TelaAreaInicial extends JFrame {
         add(comp); // efetivamente insere o componente na tela
     }
 
-    
+    private void carregaPerguntas() {
+        //carregar perguntas do binario
+    }
+
 }

@@ -21,9 +21,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 
 
-public class TelaPrincipal extends JFrame {
+public class TelaPrincipal extends JFrame implements Runnable {
     
     // Componentes referentes ao layout da tela
     private GridBagConstraints gbc;
@@ -35,16 +36,14 @@ public class TelaPrincipal extends JFrame {
     
     private JButton btnIniciar;
     
+    private JRadioButton rbtnAlt1;
+    private JRadioButton rbtnAlt2;
+    private JRadioButton rbtnAlt3;
+    private JRadioButton rbtnAlt4;
+    
     public TelaPrincipal() {
         // Define o título da tela
         super("Learn Geometry");
-        
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we) {
-                //confirmarSaida();
-            }
-        });
 
         // Define que fechar a janela, a execução aplicação será encerrada
         //setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -93,8 +92,30 @@ public class TelaPrincipal extends JFrame {
         adicionarComponente(lbInicial, GridBagConstraints.CENTER, GridBagConstraints.NONE, 6, 0, 4, 2);
         adicionarComponente(btnIniciar, GridBagConstraints.EAST, GridBagConstraints.NONE, 8, 0, 4, 3);
         
+        rbtnAlt1 = new JRadioButton("teste1");
+        rbtnAlt1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("Oi");
+                //remover tela
+                getContentPane().removeAll();
+                revalidate();
+                repaint();
+            }
+        });
+        rbtnAlt2 = new JRadioButton("Teste2");
+        rbtnAlt3 = new JRadioButton("Teste3");
+        rbtnAlt4 = new JRadioButton("Teste4");
+        //Thread t = new Thread(this);
+        //t.start();
+        
+        adicionarComponente(rbtnAlt1, GridBagConstraints.WEST, GridBagConstraints.NONE, 12, 0, 1, 1);
+        adicionarComponente(rbtnAlt2, GridBagConstraints.WEST, GridBagConstraints.NONE, 12, 1, 1, 1);
+        adicionarComponente(rbtnAlt3, GridBagConstraints.WEST, GridBagConstraints.NONE, 13, 0, 1, 1);
+        adicionarComponente(rbtnAlt4, GridBagConstraints.WEST, GridBagConstraints.NONE, 13, 1, 1, 1);
+        
     }
-    
+        
     private void criarProximaTela() {
         this.setVisible(false);
         JFrame telaAssunto = new TelaAssunto("Learn Geometry");
@@ -118,6 +139,15 @@ public class TelaPrincipal extends JFrame {
     
     public static void main(String[] args) {
         new TelaPrincipal().setVisible(true);
+    }
+
+    @Override
+    public void run() {
+        while(true) {
+            if (rbtnAlt1.isSelected()) {
+                System.out.println("Bosta");
+            }
+        }
     }
     
 }
