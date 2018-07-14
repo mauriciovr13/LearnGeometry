@@ -24,7 +24,9 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 
 
-public class TelaPrincipal extends JFrame implements Runnable {
+public class TelaPrincipal extends JFrame {
+    
+    private static TelaPrincipal instancia = null;
     
     // Componentes referentes ao layout da tela
     private GridBagConstraints gbc;
@@ -35,11 +37,19 @@ public class TelaPrincipal extends JFrame implements Runnable {
     private JLabel lbVazio;
     
     private JButton btnIniciar;
-    
+    /*
     private JRadioButton rbtnAlt1;
     private JRadioButton rbtnAlt2;
     private JRadioButton rbtnAlt3;
     private JRadioButton rbtnAlt4;
+    */
+    
+    public static TelaPrincipal getInstancia() {
+        if (instancia == null) {
+            instancia = new TelaPrincipal();
+        }
+        return instancia;
+    }
     
     public TelaPrincipal() {
         // Define o título da tela
@@ -91,7 +101,7 @@ public class TelaPrincipal extends JFrame implements Runnable {
         adicionarComponente(lbImagenInicial, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 0, 0, 4, 4);
         adicionarComponente(lbInicial, GridBagConstraints.CENTER, GridBagConstraints.NONE, 6, 0, 4, 2);
         adicionarComponente(btnIniciar, GridBagConstraints.EAST, GridBagConstraints.NONE, 8, 0, 4, 3);
-        
+        /*
         rbtnAlt1 = new JRadioButton("teste1");
         rbtnAlt1.addActionListener(new ActionListener() {
             @Override
@@ -113,17 +123,16 @@ public class TelaPrincipal extends JFrame implements Runnable {
         adicionarComponente(rbtnAlt2, GridBagConstraints.WEST, GridBagConstraints.NONE, 12, 1, 1, 1);
         adicionarComponente(rbtnAlt3, GridBagConstraints.WEST, GridBagConstraints.NONE, 13, 0, 1, 1);
         adicionarComponente(rbtnAlt4, GridBagConstraints.WEST, GridBagConstraints.NONE, 13, 1, 1, 1);
-        
+        */
     }
         
     private void criarProximaTela() {
         this.setVisible(false);
-        JFrame telaAssunto = new TelaAssunto("Learn Geometry");
-        telaAssunto.setLocationRelativeTo(null);
-        telaAssunto.setVisible(true);
+        TelaAssunto.getInstancia().setLocationRelativeTo(this);
+        TelaAssunto.getInstancia().setVisible(true);
+        //telaAssunto.setLocationRelativeTo(null);
+        //telaAssunto.setVisible(true);
     }
-    
-    
     
     private void adicionarComponente(Component comp, int anchor, int fill, int linha, int coluna, int larg, int alt) {
         gbc.anchor = anchor; // posicionamento do componente na tela (esquerda, direita, centralizado, etc)
@@ -136,18 +145,4 @@ public class TelaPrincipal extends JFrame implements Runnable {
         gbl.setConstraints(comp, gbc); // adiciona o componente "comp" ao layout com as restrições previamente especificadas
         add(comp); // efetivamente insere o componente na tela
     }
-    
-    public static void main(String[] args) {
-        new TelaPrincipal().setVisible(true);
-    }
-
-    @Override
-    public void run() {
-        while(true) {
-            if (rbtnAlt1.isSelected()) {
-                System.out.println("Bosta");
-            }
-        }
-    }
-    
 }

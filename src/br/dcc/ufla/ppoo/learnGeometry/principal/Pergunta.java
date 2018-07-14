@@ -1,4 +1,4 @@
-package br.dcc.ufla.ppoo.learnGeometry.pergunta;
+package br.dcc.ufla.ppoo.learnGeometry.principal;
 
 import java.io.Serializable;
 

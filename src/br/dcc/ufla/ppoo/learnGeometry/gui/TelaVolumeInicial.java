@@ -19,6 +19,8 @@ import javax.swing.event.AncestorListener;
 
 public class TelaVolumeInicial extends JFrame {
     
+    private static TelaVolumeInicial instancia = null;
+    
     private GridBagLayout gbl;
     private GridBagConstraints gbc;
     
@@ -28,11 +30,16 @@ public class TelaVolumeInicial extends JFrame {
     private JLabel lbVolume;
     private JLabel lbIntro;
     
-    private JFrame telaAnterior;
+    //padrao singleton
+    public static TelaVolumeInicial getInstancia() {
+        if (instancia == null) {
+            instancia = new TelaVolumeInicial("Learn Geometry");
+        }
+        return instancia;
+    }
     
-    public TelaVolumeInicial(JFrame frame, String string) {
+    public TelaVolumeInicial(String string) {
         super(string);
-        telaAnterior = frame;
         
         // Define que fechar a janela, a execução aplicação será encerrada
         //setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -86,15 +93,12 @@ public class TelaVolumeInicial extends JFrame {
         adicionarComponente(lbIntro, GridBagConstraints.WEST, GridBagConstraints.BOTH, 1, 0, 1, 1);
         adicionarComponente(btnVoltar, GridBagConstraints.WEST, GridBagConstraints.NONE, 2, 0, 1, 1);
         adicionarComponente(btnIniciar, GridBagConstraints.WEST, GridBagConstraints.NONE, 3, 0, 1, 1);
-
-        
         
     }
     
     private void reabrirTelaAnterior() {
         this.dispose();
-        telaAnterior.setVisible(true);
-        
+        TelaAssunto.getInstancia().setVisible(true);        
     }
     
     private void adicionarComponente(Component comp, int anchor, int fill, int linha, int coluna, int larg, int alt) {
@@ -108,6 +112,5 @@ public class TelaVolumeInicial extends JFrame {
         gbl.setConstraints(comp, gbc); // adiciona o componente "comp" ao layout com as restriçõs previamente especificadas
         add(comp); // efetivamente insere o componente na tela
     }
-
-    
+   
 }

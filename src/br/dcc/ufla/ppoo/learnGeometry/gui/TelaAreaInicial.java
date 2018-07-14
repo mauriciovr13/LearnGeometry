@@ -5,7 +5,7 @@
  */
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
-import br.dcc.ufla.ppoo.learnGeometry.pergunta.Pergunta;
+import br.dcc.ufla.ppoo.learnGeometry.principal.Pergunta;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -30,6 +30,8 @@ import javax.swing.event.AncestorListener;
  */
 public class TelaAreaInicial extends JFrame {
     
+    private static TelaAreaInicial instancia = null;
+    
     private GridBagLayout gbl;
     private GridBagConstraints gbc;
     
@@ -41,11 +43,16 @@ public class TelaAreaInicial extends JFrame {
     
     private ArrayList<Pergunta> perguntasAreas;
     
-    private JFrame telaAnterior;
+    //padrao singleton
+    public static TelaAreaInicial getInstancia() {
+        if (instancia == null) {
+            instancia = new TelaAreaInicial("Learn Geometry");
+        }
+        return instancia;
+    }
 
-    public TelaAreaInicial(JFrame frame, String string) {
+    public TelaAreaInicial(String string) {
         super(string);
-        telaAnterior = frame;
         
         // Define que fechar a janela, a execução aplicação será encerrada
         //setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -113,8 +120,7 @@ public class TelaAreaInicial extends JFrame {
     
     private void reabrirTelaAnterior() {
         this.dispose();
-        telaAnterior.setVisible(true);
-        
+        TelaAssunto.getInstancia().setVisible(true);        
     }
     
     private void adicionarComponente(Component comp, int anchor, int fill, int linha, int coluna, int larg, int alt) {

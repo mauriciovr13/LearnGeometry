@@ -14,20 +14,28 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class TelaTeoremaInicial extends JFrame {
+    
+    private static TelaTeoremaInicial instancia = null;
+    
     private GridBagLayout gbl;
     private GridBagConstraints gbc;
     
     private JButton btnVoltar;
     private JButton btnIniciar;
     
-    private JLabel lbTeorema
-;    private JLabel lbIntro;
-    
-    private JFrame telaAnterior;
+    private JLabel lbTeorema;
+    private JLabel lbIntro;
+        
+    //padrao singleton
+    public static TelaTeoremaInicial getInstancia() {
+        if (instancia == null) {
+            instancia = new TelaTeoremaInicial("Learn Geometry");
+        }
+        return instancia;
+    }
 
-    public TelaTeoremaInicial(JFrame frame, String string) {
+    public TelaTeoremaInicial(String string) {
         super(string);
-        telaAnterior = frame;
         
         // Define que fechar a janela, a execução aplicação será encerrada
         //setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -88,7 +96,7 @@ public class TelaTeoremaInicial extends JFrame {
     
     private void reabrirTelaAnterior() {
         this.dispose();
-        telaAnterior.setVisible(true);
+        TelaAssunto.getInstancia().setVisible(true);
         
     }
     

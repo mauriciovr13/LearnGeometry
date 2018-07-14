@@ -26,6 +26,8 @@ import javax.swing.JLabel;
  */
 public class TelaAssunto extends JFrame {
     
+    private static TelaAssunto instancia = null;
+    
     private GridBagConstraints gbc;
     private GridBagLayout gbl;
     
@@ -34,6 +36,14 @@ public class TelaAssunto extends JFrame {
     private JButton btnArea;
     private JButton btnVolume;
     private JButton btnTeorema;
+    
+    //padrao singleton
+    public static TelaAssunto getInstancia() {
+        if (instancia == null) {
+            instancia = new TelaAssunto("Learn Geometry");
+        }
+        return instancia;
+    }
 
     public TelaAssunto(String title) throws HeadlessException {
         super(title);
@@ -103,25 +113,21 @@ public class TelaAssunto extends JFrame {
     }
     
     private void criarTelaTeorema() {
-        JFrame telaTeorema = new TelaTeoremaInicial(this, this.getTitle());
-        telaTeorema.setLocationRelativeTo(null);
+        TelaTeoremaInicial.getInstancia().setLocationRelativeTo(this);
         setVisible(false);
-        telaTeorema.setVisible(true);
+        TelaTeoremaInicial.getInstancia().setVisible(true);
     }
     
     private void criarTelaAreas() {
-        JFrame telaArea = new TelaAreaInicial(this, this.getTitle());
-        telaArea.setLocationRelativeTo(null);
+        TelaAreaInicial.getInstancia().setLocationRelativeTo(this);
         setVisible(false);
-        telaArea.setVisible(true);
+        TelaAreaInicial.getInstancia().setVisible(true);        
     }
     
     private void criarTelaVolume() {
-        JFrame telaVolume = new TelaVolumeInicial(this, this.getTitle());
-        telaVolume.setLocationRelativeTo(null);
+        TelaVolumeInicial.getInstancia().setLocationRelativeTo(this);
         setVisible(false);
-        telaVolume.setVisible(true);
-        
+        TelaVolumeInicial.getInstancia().setVisible(true);        
     }
     
     private void adicionarComponente(Component comp, int anchor, int fill, int linha, int coluna, int larg, int alt) {

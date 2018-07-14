@@ -5,7 +5,7 @@
  */
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
-import br.dcc.ufla.ppoo.learnGeometry.pergunta.Pergunta;
+import br.dcc.ufla.ppoo.learnGeometry.principal.Pergunta;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -155,8 +155,6 @@ public class TelaPergunta extends JFrame {
                 verificaPergunta();
             }
         });
-        
-        
         
         adicionarComponente(lbImagem, GridBagConstraints.CENTER, GridBagConstraints.NONE, 0, 0, 3, 3);
         adicionarComponente(lbPergunta, GridBagConstraints.WEST, GridBagConstraints.NONE, 3, 0, 1, 1);
