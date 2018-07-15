@@ -30,8 +30,8 @@ public class TelaPergunta extends JFrame {
     private GridBagConstraints gbc;
     private GridBagLayout gbl;
     
-    private int qtdPerguntasRespondidas = 0;
-    private int qtdAcertos = 0;
+    public static int qtdPerguntasRespondidas = 0;
+    public static int qtdAcertos = 0;
     
     private ArrayList<Pergunta> perguntasAreas;
     private Pergunta p;

@@ -102,7 +102,10 @@ public class TelaAreaInicial extends JFrame {
         btnIniciar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                construirTelaPerguntas();
+                TelaResultado tl = new TelaResultado(25, 25);
+                setVisible(false);
+                tl.setVisible(true);
+                //construirTelaPerguntas();
             }
         });
         
