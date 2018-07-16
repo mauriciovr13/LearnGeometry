@@ -84,6 +84,12 @@ public class TelaResultado extends JFrame{
         });
         
         btnGabarito = new JButton("Conferir Gabarito");
+        btnGabarito.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarGabarito();
+            }
+        });
         
         
         
@@ -111,6 +117,11 @@ public class TelaResultado extends JFrame{
         gbc.insets = new Insets(5, 5, 5, 5); // espaçamento (em pixels) entre os componentes da tela
         gbl.setConstraints(comp, gbc); // adiciona o componente "comp" ao layout com as restrições previamente especificadas
         add(comp); // efetivamente insere o componente na tela
+    }
+    
+    private void mostrarGabarito() {
+        //construir a tela de gabarito
+        //lendo um txt
     }
     
     

@@ -1,5 +1,6 @@
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
+import br.dcc.ufla.ppoo.learnGeometry.pergunta.Pergunta;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -9,9 +10,14 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class TelaTeoremaInicial extends JFrame {
     
@@ -25,7 +31,9 @@ public class TelaTeoremaInicial extends JFrame {
     
     private JLabel lbTeorema;
     private JLabel lbIntro;
-        
+    
+    private ArrayList<Pergunta> perguntasTeorema;
+    
     //padrao singleton
     public static TelaTeoremaInicial getInstancia() {
         if (instancia == null) {
@@ -56,6 +64,9 @@ public class TelaTeoremaInicial extends JFrame {
         // Abrindo a tela no centro do screen
         setLocationRelativeTo(null);
         
+        // Lendo as perguntas de um arquivo de texto
+        carregaPerguntas();
+        
     }
     
     private void construirTela() {
@@ -65,12 +76,12 @@ public class TelaTeoremaInicial extends JFrame {
         
         lbTeorema = new JLabel("Teorema/Leis");
         lbTeorema.setFont(new Font("Courier", Font.PLAIN, 50));
-        lbIntro = new JLabel("Nesta sessão haverá um teste referente ao\n" +
-                                "reconhecimento dos Teoremas e Leis na geometria.");
-        //Intro.setFont(new Font("Courier", Font.PLAIN, 20));
+        lbIntro = new JLabel("<html>Nesta sessão haverá um teste referente ao reconhecimento" +
+                                "<br>dos Teoremas e Leis na geometria.</html>");
+        lbIntro.setFont(new Font("Courier", Font.PLAIN, 20));
         
         btnVoltar = new JButton("Voltar");
-        btnVoltar.setPreferredSize(new Dimension(100, 40));
+        btnVoltar.setPreferredSize(new Dimension(150, 40));
         btnVoltar.setBackground(Color.RED);
         btnVoltar.setForeground(Color.WHITE);
         btnVoltar.addActionListener(new ActionListener() {
@@ -81,14 +92,14 @@ public class TelaTeoremaInicial extends JFrame {
         });
         
         btnIniciar =  new JButton("Iniciar");
-        btnIniciar.setPreferredSize(new Dimension(100, 40));
+        btnIniciar.setPreferredSize(new Dimension(150, 40));
         btnIniciar.setBackground(Color.GREEN);
         btnIniciar.setForeground(Color.WHITE);
         
-        adicionarComponente(lbTeorema, GridBagConstraints.WEST, GridBagConstraints.NONE, 0, 0, 1, 1);
-        adicionarComponente(lbIntro, GridBagConstraints.WEST, GridBagConstraints.BOTH, 1, 0, 1, 1);
-        adicionarComponente(btnVoltar, GridBagConstraints.WEST, GridBagConstraints.NONE, 2, 0, 1, 1);
-        adicionarComponente(btnIniciar, GridBagConstraints.WEST, GridBagConstraints.NONE, 3, 0, 1, 1);
+        adicionarComponente(lbTeorema, GridBagConstraints.WEST, GridBagConstraints.NONE, 0, 0, 4, 2);
+        adicionarComponente(lbIntro, GridBagConstraints.WEST, GridBagConstraints.BOTH, 2, 0, 2, 2);
+        adicionarComponente(btnVoltar, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 0, 1, 2);
+        adicionarComponente(btnIniciar, GridBagConstraints.WEST, GridBagConstraints.NONE, 6, 0, 1, 2);
 
         
         
@@ -107,9 +118,34 @@ public class TelaTeoremaInicial extends JFrame {
         gbc.gridx = coluna; // coluna do grid onde o componente será inserido
         gbc.gridwidth = larg; // quantidade de colunas do grid que o componente irá ocupar
         gbc.gridheight = alt; // quantidade de linhas do grid que o componente irá ocupar
-        gbc.insets = new Insets(3, 3, 3, 3); // espaçamento (em pixels) entre os componentes da tela
+        gbc.insets = new Insets(10, 10, 10, 10); // espaçamento (em pixels) entre os componentes da tela
         gbl.setConstraints(comp, gbc); // adiciona o componente "comp" ao layout com as restriçõs previamente especificadas
         add(comp); // efetivamente insere o componente na tela
+    }
+    
+    private void carregaPerguntas() {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("perguntasAreas.txt"));
+            while (br.ready()) {
+                String descricao = br.readLine();
+                String[] alternativas = br.readLine().split(";");
+                int posCorreta = Integer.parseInt(br.readLine());
+                String caminhoImagem = br.readLine();
+                Pergunta p = new Pergunta(descricao, alternativas, posCorreta, caminhoImagem);
+                perguntasTeorema.add(p);
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "O arquivo que contem as perguntas não foi encontrado!");
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(this, "Erro ao fechar o arquivo!");
+                }
+            }
+        }
     }
 
     

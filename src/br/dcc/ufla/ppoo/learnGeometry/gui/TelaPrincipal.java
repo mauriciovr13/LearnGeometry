@@ -127,11 +127,9 @@ public class TelaPrincipal extends JFrame {
     }
         
     private void criarProximaTela() {
-        this.setVisible(false);
         TelaAssunto.getInstancia().setLocationRelativeTo(this);
+        this.setVisible(false);
         TelaAssunto.getInstancia().setVisible(true);
-        //telaAssunto.setLocationRelativeTo(null);
-        //telaAssunto.setVisible(true);
     }
     
     private void adicionarComponente(Component comp, int anchor, int fill, int linha, int coluna, int larg, int alt) {

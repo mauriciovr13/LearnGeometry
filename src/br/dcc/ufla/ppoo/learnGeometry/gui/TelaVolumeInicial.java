@@ -1,5 +1,6 @@
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
+import br.dcc.ufla.ppoo.learnGeometry.pergunta.Pergunta;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -11,10 +12,15 @@ import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.event.AncestorListener;
 
 public class TelaVolumeInicial extends JFrame {
@@ -29,6 +35,8 @@ public class TelaVolumeInicial extends JFrame {
     
     private JLabel lbVolume;
     private JLabel lbIntro;
+    
+    private ArrayList<Pergunta> perguntasVolume;
     
     //padrao singleton
     public static TelaVolumeInicial getInstancia() {
@@ -60,6 +68,9 @@ public class TelaVolumeInicial extends JFrame {
         // Abrindo a tela no centro do screen
         setLocationRelativeTo(null);
         
+        
+        //lendo as perguntas de um arquivo texto
+        carregaPerguntas();
     }
     
     private void construirTela() {
@@ -113,4 +124,28 @@ public class TelaVolumeInicial extends JFrame {
         add(comp); // efetivamente insere o componente na tela
     }
    
+    private void carregaPerguntas() {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("perguntasAreas.txt"));
+            while (br.ready()) {
+                String descricao = br.readLine();
+                String[] alternativas = br.readLine().split(";");
+                int posCorreta = Integer.parseInt(br.readLine());
+                String caminhoImagem = br.readLine();
+                Pergunta p = new Pergunta(descricao, alternativas, posCorreta, caminhoImagem);
+                perguntasVolume.add(p);
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "O arquivo que contem as perguntas não foi encontrado!");
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(this, "Erro ao fechar o arquivo!");
+                }
+            }
+        }
+    }
 }

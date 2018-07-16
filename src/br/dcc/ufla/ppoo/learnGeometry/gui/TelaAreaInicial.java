@@ -5,7 +5,7 @@
  */
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
-import br.dcc.ufla.ppoo.learnGeometry.principal.Pergunta;
+import br.dcc.ufla.ppoo.learnGeometry.pergunta.Pergunta;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -17,11 +17,15 @@ import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.event.AncestorListener;
 
 /**
@@ -82,10 +86,11 @@ public class TelaAreaInicial extends JFrame {
         
         lbArea = new JLabel("Área");
         lbArea.setFont(new Font("Courier", Font.PLAIN, 50));
-        lbIntro = new JLabel("Nesta sessão haverá um teste referente ao reconhecimento\ndas fórmulas de áres geométricas.");
-        //Intro.setFont(new Font("Courier", Font.PLAIN, 20));
+        lbIntro = new JLabel("<html>Nesta sessão haverá um teste referente ao reconhecimento"
+                           + "<br>das fórmulas de áres geométricas. </html>");
+        lbIntro.setFont(new Font("Courier", Font.PLAIN, 20));
         btnVoltar = new JButton("Voltar");
-        btnVoltar.setPreferredSize(new Dimension(100, 40));
+        btnVoltar.setPreferredSize(new Dimension(150, 40));
         btnVoltar.setBackground(Color.RED);
         btnVoltar.setForeground(Color.WHITE);
         btnVoltar.addActionListener(new ActionListener() {
@@ -96,7 +101,7 @@ public class TelaAreaInicial extends JFrame {
         });
         
         btnIniciar =  new JButton("Iniciar");
-        btnIniciar.setPreferredSize(new Dimension(100, 40));
+        btnIniciar.setPreferredSize(new Dimension(150, 40));
         btnIniciar.setBackground(Color.GREEN);
         btnIniciar.setForeground(Color.WHITE);
         btnIniciar.addActionListener(new ActionListener() {
@@ -109,10 +114,10 @@ public class TelaAreaInicial extends JFrame {
             }
         });
         
-        adicionarComponente(lbArea, GridBagConstraints.WEST, GridBagConstraints.NONE, 0, 0, 1, 1);
-        adicionarComponente(lbIntro, GridBagConstraints.WEST, GridBagConstraints.NONE, 1, 0, 1, 3);
-        adicionarComponente(btnVoltar, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 0, 1, 1);
-        adicionarComponente(btnIniciar, GridBagConstraints.WEST, GridBagConstraints.NONE, 5, 0, 1, 1);
+        adicionarComponente(lbArea, GridBagConstraints.WEST, GridBagConstraints.NONE, 0, 0, 4, 2);
+        adicionarComponente(lbIntro, GridBagConstraints.WEST, GridBagConstraints.NONE, 2, 0, 4, 2);
+        adicionarComponente(btnVoltar, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 0, 1, 2);
+        adicionarComponente(btnIniciar, GridBagConstraints.WEST, GridBagConstraints.NONE, 6, 0, 1, 2);
         
     }
     
@@ -133,13 +138,40 @@ public class TelaAreaInicial extends JFrame {
         gbc.gridx = coluna; // coluna do grid onde o componente será inserido
         gbc.gridwidth = larg; // quantidade de colunas do grid que o componente irá ocupar
         gbc.gridheight = alt; // quantidade de linhas do grid que o componente irá ocupar
-        gbc.insets = new Insets(3, 3, 3, 3); // espaçamento (em pixels) entre os componentes da tela
+        gbc.insets = new Insets(10, 10, 10, 10); // espaçamento (em pixels) entre os componentes da tela
         gbl.setConstraints(comp, gbc); // adiciona o componente "comp" ao layout com as restriçõs previamente especificadas
         add(comp); // efetivamente insere o componente na tela
     }
 
     private void carregaPerguntas() {
-        //carregar perguntas do binario
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("../pergunta/perguntasAreas.txt"));
+            System.out.println("*");
+            while (br.ready()) {
+                System.out.println("1");
+                String descricao = br.readLine();
+                System.out.println("2");
+                String[] alternativas = br.readLine().split(";");
+                System.out.println("3");
+                int posCorreta = Integer.parseInt(br.readLine());
+                System.out.println("4");
+                String caminhoImagem = br.readLine();
+                System.out.println("5");
+                Pergunta p = new Pergunta(descricao, alternativas, posCorreta, caminhoImagem);
+                perguntasAreas.add(p);
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "O arquivo que contem as perguntas não foi encontrado!");
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(this, "Erro ao fechar o arquivo!");
+                }
+            }
+        }
     }
 
 }

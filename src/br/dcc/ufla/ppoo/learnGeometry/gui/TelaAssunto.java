@@ -22,7 +22,7 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author Maurício Vieira
+ * @author Maurício Vieira, Vinicius Spinelli e Pedro Pio
  */
 public class TelaAssunto extends JFrame {
     

@@ -5,7 +5,7 @@
  */
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
-import br.dcc.ufla.ppoo.learnGeometry.principal.Pergunta;
+import br.dcc.ufla.ppoo.learnGeometry.pergunta.Pergunta;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -171,11 +171,13 @@ public class TelaPergunta extends JFrame {
         }
         perguntasAreas.remove(indicePergunta);
         removeAll();
-        construirTela();
+        proximaPergunta();
     }
     
     private void voltarTelaAnterior() {
-        
+        TelaAssunto.getInstancia().setLocationRelativeTo(this);
+        dispose();
+        TelaAssunto.getInstancia().setVisible(true);
     }
     
     private void adicionarComponente(Component comp, int anchor, int fill, int linha, int coluna, int larg, int alt) {
@@ -188,6 +190,20 @@ public class TelaPergunta extends JFrame {
         gbc.insets = new Insets(3, 3, 3, 3); // espaçamento (em pixels) entre os componentes da tela
         gbl.setConstraints(comp, gbc); // adiciona o componente "comp" ao layout com as restrições previamente especificadas
         add(comp); // efetivamente insere o componente na tela
+    }
+
+    private void proximaPergunta() {
+        indicePergunta = getPergunta();
+        p = perguntasAreas.get(indicePergunta);
+        imagem = new ImageIcon(p.getCaminhoImagem());
+        lbImagem.setIcon(imagem);
+        lbPergunta.setText(p.getDescricao());
+        String[] alternativas = p.getAlternativas();
+        rbtnAlt1.setText(alternativas[0]);
+        rbtnAlt2.setText(alternativas[1]);
+        rbtnAlt3.setText(alternativas[2]);
+        rbtnAlt4.setText(alternativas[3]);
+        
     }
     
 }
