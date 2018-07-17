@@ -246,7 +246,9 @@ public class TelaPergunta extends JFrame {
     }
 
     private void gerarResultado() {
+        //pensar uma maneira de pegar a qtdPerguntas pra passar no construtor...
         TelaResultado tr = new TelaResultado(qtdAcertos, 6);
+        tr.setLocationRelativeTo(this);
         setVisible(false);
         tr.setVisible(true);
     }
