@@ -88,8 +88,8 @@ public class TelaPergunta extends JFrame {
         indicePergunta = getPergunta();
         p = perguntasAreas.get(indicePergunta);
         
-        imagem = new ImageIcon(p.getCaminhoImagem());
-        lbImagem = new JLabel(imagem);
+        imagem = new ImageIcon(p.getCaminhoImagem());//é mesmo necessário?
+        lbImagem = new JLabel(new ImageIcon(p.getCaminhoImagem()));
         lbPergunta = new JLabel(p.getDescricao());
         String[] alternativas = p.getAlternativas();
         rbtnAlt1 = new JRadioButton(alternativas[0]);

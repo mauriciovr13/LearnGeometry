@@ -75,6 +75,7 @@ public class TelaAreaInicial extends JFrame {
         //pack();
         
         //Metodo que ler o arquivo binario com as perguntas sobre area
+        perguntasAreas = new ArrayList<Pergunta>();
         carregaPerguntas();        
         
     }
@@ -107,9 +108,12 @@ public class TelaAreaInicial extends JFrame {
         btnIniciar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                TelaResultado tl = new TelaResultado(25, 25);
+                //TelaResultado tl = new TelaResultado(25, 25);
+                TelaPergunta tp = new TelaPergunta("Areas", perguntasAreas);
                 setVisible(false);
-                tl.setVisible(true);
+                tp.setVisible(true);
+                System.out.println("a");
+                //tl.setVisible(true);
                 //construirTelaPerguntas();
             }
         });
@@ -146,7 +150,8 @@ public class TelaAreaInicial extends JFrame {
     private void carregaPerguntas() {
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("../pergunta/perguntasAreas.txt"));
+            //diretório sujeito a mudança para testes até que descubra o correto...
+            br = new BufferedReader(new FileReader("/home/spinelli/Documentos/Git/LearnGeometry/src/br/dcc/ufla/ppoo/learnGeometry/pergunta/perguntas/areas/perguntasAreas.txt"));
             System.out.println("*");
             while (br.ready()) {
                 System.out.println("1");
@@ -159,7 +164,9 @@ public class TelaAreaInicial extends JFrame {
                 String caminhoImagem = br.readLine();
                 System.out.println("5");
                 Pergunta p = new Pergunta(descricao, alternativas, posCorreta, caminhoImagem);
+                System.out.println("6");
                 perguntasAreas.add(p);
+                System.out.println("7");
             }
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "O arquivo que contem as perguntas não foi encontrado!");

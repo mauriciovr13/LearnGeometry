@@ -1,0 +1,4 @@
+Qual a area do quadrado?
+a- b*h;b- b*b;c- a*a; d- (b*h)/2
+1
+/home/spinelli/Documentos/Git/LearnGeometry/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
