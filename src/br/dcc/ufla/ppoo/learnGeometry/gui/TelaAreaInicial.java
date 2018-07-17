@@ -74,9 +74,9 @@ public class TelaAreaInicial extends JFrame {
         // Redimensiona automaticamente a tela, com base nos componentes existentes na mesma
         //pack();
         
-        //Metodo que ler o arquivo binario com as perguntas sobre area
+        //Metodo que ler o arquivo texto com as perguntas sobre area
         perguntasAreas = new ArrayList<Pergunta>();
-        carregaPerguntas();        
+        //carregaPerguntas();        
         
     }
     
@@ -108,12 +108,9 @@ public class TelaAreaInicial extends JFrame {
         btnIniciar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //TelaResultado tl = new TelaResultado(25, 25);
-                TelaPergunta tp = new TelaPergunta("Areas", perguntasAreas);
-                setVisible(false);
-                tp.setVisible(true);
-                //tl.setVisible(true);
-                //construirTelaPerguntas();
+                //TelaResultado tl = new TelaResultado(25, 25); 
+                carregaPerguntas();
+                construirTelaPerguntas();
             }
         });
         
@@ -125,8 +122,11 @@ public class TelaAreaInicial extends JFrame {
     }
     
     private void construirTelaPerguntas() {
-        new TelaPergunta(this.getTitle(), perguntasAreas).setVisible(true);
-        dispose();
+        TelaPergunta tp = new TelaPergunta("Areas", perguntasAreas);
+        tp.setLocationRelativeTo(this);
+        setVisible(false);
+        tp.setVisible(true);
+        //dispose();
     }
     
     private void reabrirTelaAnterior() {

@@ -80,9 +80,9 @@ public class TelaVolumeInicial extends JFrame {
         
         lbVolume = new JLabel("Volume");
         lbVolume.setFont(new Font("Courier", Font.PLAIN, 50));
-        lbIntro = new JLabel("Nesta sessão haverá um teste referente ao\n" +
-                                "reconhecimento das fórmulas de volumes geométricos.");
-        //Intro.setFont(new Font("Courier", Font.PLAIN, 20));
+        lbIntro = new JLabel("<html>Nesta sessão haverá um teste referente ao" +
+                             "<br>reconhecimento das fórmulas de volumes geométricos.</html>");
+        lbIntro.setFont(new Font("Courier", Font.PLAIN, 20));
         
         btnVoltar = new JButton("Voltar");
         btnVoltar.setPreferredSize(new Dimension(100, 40));
@@ -119,7 +119,7 @@ public class TelaVolumeInicial extends JFrame {
         gbc.gridx = coluna; // coluna do grid onde o componente será inserido
         gbc.gridwidth = larg; // quantidade de colunas do grid que o componente irá ocupar
         gbc.gridheight = alt; // quantidade de linhas do grid que o componente irá ocupar
-        gbc.insets = new Insets(3, 3, 3, 3); // espaçamento (em pixels) entre os componentes da tela
+        gbc.insets = new Insets(10, 10, 10, 10); // espaçamento (em pixels) entre os componentes da tela
         gbl.setConstraints(comp, gbc); // adiciona o componente "comp" ao layout com as restriçõs previamente especificadas
         add(comp); // efetivamente insere o componente na tela
     }

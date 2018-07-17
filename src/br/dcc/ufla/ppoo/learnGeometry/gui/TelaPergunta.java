@@ -16,6 +16,9 @@ import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ButtonGroup;
@@ -23,6 +26,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
@@ -35,8 +39,8 @@ public class TelaPergunta extends JFrame {
     private GridBagConstraints gbc;
     private GridBagLayout gbl;
     
-    public static int qtdPerguntasRespondidas = 0;
-    public static int qtdAcertos = 0;
+    public int qtdPerguntasRespondidas = 0;
+    public int qtdAcertos = 0;
     
     private ArrayList<Pergunta> perguntasAreas;
     private Pergunta p;
@@ -78,15 +82,15 @@ public class TelaPergunta extends JFrame {
     }
     
     private int getPergunta() {
-        //obtem um indice para o vetor de pergutas
-        
         //instância um objeto da classe Random usando o construtor básico
         Random gerador = new Random();
+        //obtem um indice para o vetor de pergutas
         return gerador.nextInt(perguntasAreas.size());
     
     }
 
     private void construirTela() {
+        System.out.println("oi");
         gbc = new GridBagConstraints();
         gbl = new GridBagLayout();
         setLayout(gbl);
@@ -145,12 +149,14 @@ public class TelaPergunta extends JFrame {
         group.add(rbtnAlt3);
         group.add(rbtnAlt4);
         
-        JPanel radioPanel = new JPanel(new GridLayout(2, 2));
+        JPanel radioPanel = new JPanel(new GridLayout(3, 2));
+        JPanel radioPanel1 = new JPanel(new GridLayout(2, 1));
+        radioPanel1.add(lbImagem);
+        radioPanel1.add(lbPergunta);
         radioPanel.add(rbtnAlt1);
         radioPanel.add(rbtnAlt2);
         radioPanel.add(rbtnAlt3);
         radioPanel.add(rbtnAlt4);
-        
         btnVoltar = new JButton("Voltar");
         if (qtdPerguntasRespondidas == 0) {
             btnVoltar.setEnabled(true);
@@ -169,6 +175,8 @@ public class TelaPergunta extends JFrame {
         btnProximo = new JButton("Proximo");
         btnProximo.setPreferredSize(new Dimension(150, 40));
         btnProximo.setBackground(Color.GREEN);
+        btnProximo.setForeground(Color.WHITE);
+        radioPanel.add(btnProximo);
         btnProximo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -176,29 +184,46 @@ public class TelaPergunta extends JFrame {
             }
         });
         
-        adicionarComponente(lbImagem, GridBagConstraints.CENTER, GridBagConstraints.NONE, 0, 0, 3, 3);
-        adicionarComponente(lbPergunta, GridBagConstraints.WEST, GridBagConstraints.NONE, 3, 0, 1, 1);
-        adicionarComponente(radioPanel, GridBagConstraints.CENTER, GridBagConstraints.NONE, 4, 0, 1, 1);
-        adicionarComponente(btnProximo, GridBagConstraints.CENTER, GridBagConstraints.NONE, 6, 1, 1, 1);
-        /*adicionarComponente(rbtnAlt2, GridBagConstraints.CENTER, GridBagConstraints.NONE, 4, 1, 1, 1);
-        adicionarComponente(rbtnAlt3, GridBagConstraints.CENTER, GridBagConstraints.NONE, 5, 0, 1, 1);
-        adicionarComponente(rbtnAlt4, GridBagConstraints.CENTER, GridBagConstraints.NONE, 5, 1, 1, 1);*/
+        //adicionarComponente(lbImagem, GridBagConstraints.CENTER, GridBagConstraints.NONE, 0, 0, 3, 3);
+        //adicionarComponente(lbPergunta, GridBagConstraints.WEST, GridBagConstraints.NONE, 3, 0, 1, 1);
+        adicionarComponente(radioPanel1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 0, 0, 4, 4);
+        adicionarComponente(radioPanel, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 4, 0, 4, 4);
+        //adicionarComponente(btnProximo, GridBagConstraints.EAST, GridBagConstraints.BOTH, 8, 0, 4, 1);
                 
     }
     
     private void verificaPergunta() {
-        if (rbtnAlt1.isSelected() && p.validarResposta(rbtnAlt1.getText())) {
-            qtdAcertos += 1;
+        String log = null;
+        if (rbtnAlt1.isSelected()) {
+            int i = p.getResposta();
+            log = p.getAlternativaIndex(i) + ";" + rbtnAlt1.getText() + "\n";
+            if (p.verificaReposta(rbtnAlt1.getText())) {
+                qtdAcertos += 1;
+            }
         }
-        else if (rbtnAlt2.isSelected() && p.validarResposta(rbtnAlt2.getText())) {
-            qtdAcertos += 1;
+        else if (rbtnAlt2.isSelected()) {
+            int i = p.getResposta();
+            log = p.getAlternativaIndex(i) + ";" + rbtnAlt2.getText() + "\n";
+            if (p.verificaReposta(rbtnAlt2.getText())) {
+                qtdAcertos += 1;
+            }
         }
-        else if (rbtnAlt3.isSelected() && p.validarResposta(rbtnAlt3.getText())) {
-            qtdAcertos += 1;
+        else if (rbtnAlt3.isSelected()) {
+            int i = p.getResposta();
+            log = p.getAlternativaIndex(i) + ";" + rbtnAlt3.getText() + "\n";
+            if (p.verificaReposta(rbtnAlt3.getText())) {
+                qtdAcertos += 1;
+            }
         }
-        else if (rbtnAlt4.isSelected() && p.validarResposta(rbtnAlt4.getText())) {
-            qtdAcertos += 1;
+        else if (rbtnAlt4.isSelected()) {
+            int i = p.getResposta();
+            log = p.getAlternativaIndex(i) + ";" + rbtnAlt4.getText() + "\n";
+            if (p.verificaReposta(rbtnAlt4.getText())) {
+                qtdAcertos += 1;
+            }
         }
+
+        escreverArquivoLog(log);
         //removeAll();
         perguntasAreas.remove(indicePergunta);
         if (!perguntasAreas.isEmpty()){
@@ -207,6 +232,24 @@ public class TelaPergunta extends JFrame {
         else{
             gerarResultado();
             
+        }
+    }
+    
+    private void escreverArquivoLog(String log) {
+        BufferedWriter bw = null;
+        try {
+            bw = new BufferedWriter(new FileWriter("log.txt", true));
+            bw.write(log);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao salvar no log de resposats");
+        } finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                } catch (IOException e) {
+                    System.out.println("Não é para entrar aqui");
+                }
+            }
         }
     }
     
@@ -229,7 +272,7 @@ public class TelaPergunta extends JFrame {
     }
 
     private void proximaPergunta() {
-        /*indicePergunta = getPergunta();
+        indicePergunta = getPergunta();
         p = perguntasAreas.get(indicePergunta);
         imagem = new ImageIcon(p.getCaminhoImagem());
         lbImagem.setIcon(imagem);
@@ -239,17 +282,20 @@ public class TelaPergunta extends JFrame {
         rbtnAlt2.setText(alternativas[1]);
         rbtnAlt3.setText(alternativas[2]);
         rbtnAlt4.setText(alternativas[3]);
-        */
+        group.clearSelection();        
+        /*
         TelaPergunta tp = new TelaPergunta("Areas", perguntasAreas);
         setVisible(false);
         tp.setVisible(true);
+        */
     }
 
     private void gerarResultado() {
         //pensar uma maneira de pegar a qtdPerguntas pra passar no construtor...
         TelaResultado tr = new TelaResultado(qtdAcertos, 6);
         tr.setLocationRelativeTo(this);
-        setVisible(false);
+        //setVisible(false);        
+        this.dispose();
         tr.setVisible(true);
     }
     

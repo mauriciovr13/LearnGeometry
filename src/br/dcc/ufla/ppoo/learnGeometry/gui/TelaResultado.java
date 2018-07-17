@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -17,6 +18,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -66,7 +68,7 @@ public class TelaResultado extends JFrame{
         lbAproveitamento = new JLabel("Você obteve " + aproveitamento + "% de aproveitamento");
         
         btnRefazer =  new JButton("Refazer teste");
-        btnRefazer.setBackground(Color.BLUE);
+        btnRefazer.setBackground(Color.GREEN);
         btnRefazer.setForeground(Color.WHITE);
         btnRefazer.addActionListener(new ActionListener() {
             @Override
@@ -81,32 +83,45 @@ public class TelaResultado extends JFrame{
         btnEncerrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                criarTelaAssunto();
             }
         });
         
         btnGabarito = new JButton("Conferir Gabarito");
+        btnGabarito.setBackground(Color.BLUE);
+        btnGabarito.setForeground(Color.WHITE);
         btnGabarito.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mostrarGabarito();
             }
         });
-        
+        JPanel panel = new JPanel(new GridLayout(1, 3));
+        panel.add(btnRefazer);
+        panel.add(btnEncerrar);
+        panel.add(btnGabarito);
         
         
         adicionarComponente(lbTexto, GridBagConstraints.WEST, GridBagConstraints.BOTH, 0, 0, 4, 2);
         adicionarComponente(lbresultado, GridBagConstraints.WEST, GridBagConstraints.BOTH, 2, 0, 1, 1);
         adicionarComponente(lbAproveitamento, GridBagConstraints.WEST, GridBagConstraints.BOTH, 3, 0, 1, 1);
-        adicionarComponente(btnRefazer, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 0, 1, 1);
+        adicionarComponente(panel, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 0, 1, 1);
+        /*adicionarComponente(btnRefazer, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 0, 1, 1);
         adicionarComponente(btnEncerrar, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 1, 1, 1);
+        adicionarComponente(btnGabarito, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 2, 1, 1);*/
         
     }
     
-    private void telaRefazerTeste() {
+    private void criarTelaAssunto() {
         TelaAssunto.getInstancia().setLocationRelativeTo(this);
-        dispose();
+        this.dispose();
         TelaAssunto.getInstancia().setVisible(true);
+    }
+    
+    private void telaRefazerTeste() {
+        TelaAreaInicial.getInstancia().setLocationRelativeTo(this);
+        this.dispose();
+        TelaAreaInicial.getInstancia().setVisible(true);
     }
     
     private void adicionarComponente(Component comp, int anchor, int fill, int linha, int coluna, int larg, int alt) {
@@ -122,6 +137,10 @@ public class TelaResultado extends JFrame{
     }
     
     private void mostrarGabarito() {
+        TelaGabarito tg = new TelaGabarito(this.getTitle());
+        tg.setLocationRelativeTo(this);
+        this.dispose();
+        tg.setVisible(true);
         //construir a tela de gabarito
         //lendo um txt
     }

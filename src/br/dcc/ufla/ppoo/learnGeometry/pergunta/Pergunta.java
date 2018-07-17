@@ -15,11 +15,12 @@ public class Pergunta implements Serializable {
         this.caminhoImagem = caminhoImagem;
     }
     
-    public boolean validarResposta(String resposta) {
-        if (alternativas[posicaoCorreta].equalsIgnoreCase(resposta)) {
-            return true;
-        }
-        return false;
+    public int getResposta() {
+        return posicaoCorreta;
+    }
+    
+    public String getAlternativaIndex(int i) {
+        return alternativas[i];
     }
 
     public String getDescricao() {
@@ -32,6 +33,13 @@ public class Pergunta implements Serializable {
 
     public String getCaminhoImagem() {
         return caminhoImagem;
+    }
+    
+    public boolean verificaReposta(String resp) {
+        if (resp.equals(alternativas[posicaoCorreta])) {
+            return true;
+        }
+        return false;
     }
     
     

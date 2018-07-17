@@ -121,7 +121,7 @@ public class TelaAssunto extends JFrame {
     private void criarTelaAreas() {
         TelaAreaInicial.getInstancia().setLocationRelativeTo(this);
         setVisible(false);
-        TelaAreaInicial.getInstancia().setVisible(true);        
+        TelaAreaInicial.getInstancia().setVisible(true);
     }
     
     private void criarTelaVolume() {
