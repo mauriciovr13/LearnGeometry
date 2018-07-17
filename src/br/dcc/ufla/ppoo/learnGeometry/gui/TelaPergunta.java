@@ -6,19 +6,24 @@
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
 import br.dcc.ufla.ppoo.learnGeometry.pergunta.Pergunta;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 /**
@@ -48,6 +53,7 @@ public class TelaPergunta extends JFrame {
     private JButton btnPular;
     private JButton btnProximo;
     private JButton btnFinalizarTeste;
+    private ButtonGroup group;
 
     public TelaPergunta(String string, ArrayList<Pergunta> perguntasAreas) {
         super(string);
@@ -93,27 +99,27 @@ public class TelaPergunta extends JFrame {
         lbPergunta = new JLabel(p.getDescricao());
         String[] alternativas = p.getAlternativas();
         rbtnAlt1 = new JRadioButton(alternativas[0]);
-        rbtnAlt1.addActionListener(new ActionListener() {
+        /*rbtnAlt1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 rbtnAlt2.setSelected(false);
                 rbtnAlt3.setSelected(false);
                 rbtnAlt4.setSelected(false);
             }
-        });
+        });*/
         
         rbtnAlt2 = new JRadioButton(alternativas[1]);
-        rbtnAlt2.addActionListener(new ActionListener() {
+        /*rbtnAlt2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 rbtnAlt1.setSelected(false);
                 rbtnAlt3.setSelected(false);
                 rbtnAlt4.setSelected(false);
             }
-        });
+        });*/
         
         rbtnAlt3 = new JRadioButton(alternativas[2]);
-        rbtnAlt3.addActionListener(new ActionListener() {
+        /*rbtnAlt3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 rbtnAlt1.setSelected(false);
@@ -121,17 +127,29 @@ public class TelaPergunta extends JFrame {
                 rbtnAlt4.setSelected(false);
                 
             }
-        });
+        });*/
         
         rbtnAlt4 = new JRadioButton(alternativas[3]);
-        rbtnAlt4.addActionListener(new ActionListener() {
+        /*rbtnAlt4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 rbtnAlt1.setSelected(false);
                 rbtnAlt2.setSelected(false);
                 rbtnAlt3.setSelected(false);
             }
-        });
+        });*/
+        
+        group = new ButtonGroup();
+        group.add(rbtnAlt1);
+        group.add(rbtnAlt2);
+        group.add(rbtnAlt3);
+        group.add(rbtnAlt4);
+        
+        JPanel radioPanel = new JPanel(new GridLayout(2, 2));
+        radioPanel.add(rbtnAlt1);
+        radioPanel.add(rbtnAlt2);
+        radioPanel.add(rbtnAlt3);
+        radioPanel.add(rbtnAlt4);
         
         btnVoltar = new JButton("Voltar");
         if (qtdPerguntasRespondidas == 0) {
@@ -149,6 +167,8 @@ public class TelaPergunta extends JFrame {
         btnPular = new JButton("Pular");
         
         btnProximo = new JButton("Proximo");
+        btnProximo.setPreferredSize(new Dimension(150, 40));
+        btnProximo.setBackground(Color.GREEN);
         btnProximo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -158,10 +178,11 @@ public class TelaPergunta extends JFrame {
         
         adicionarComponente(lbImagem, GridBagConstraints.CENTER, GridBagConstraints.NONE, 0, 0, 3, 3);
         adicionarComponente(lbPergunta, GridBagConstraints.WEST, GridBagConstraints.NONE, 3, 0, 1, 1);
-        adicionarComponente(rbtnAlt1, GridBagConstraints.CENTER, GridBagConstraints.NONE, 4, 0, 1, 1);
-        adicionarComponente(rbtnAlt2, GridBagConstraints.CENTER, GridBagConstraints.NONE, 4, 1, 1, 1);
+        adicionarComponente(radioPanel, GridBagConstraints.CENTER, GridBagConstraints.NONE, 4, 0, 1, 1);
+        adicionarComponente(btnProximo, GridBagConstraints.CENTER, GridBagConstraints.NONE, 6, 1, 1, 1);
+        /*adicionarComponente(rbtnAlt2, GridBagConstraints.CENTER, GridBagConstraints.NONE, 4, 1, 1, 1);
         adicionarComponente(rbtnAlt3, GridBagConstraints.CENTER, GridBagConstraints.NONE, 5, 0, 1, 1);
-        adicionarComponente(rbtnAlt4, GridBagConstraints.CENTER, GridBagConstraints.NONE, 5, 1, 1, 1);
+        adicionarComponente(rbtnAlt4, GridBagConstraints.CENTER, GridBagConstraints.NONE, 5, 1, 1, 1);*/
                 
     }
     
@@ -169,9 +190,24 @@ public class TelaPergunta extends JFrame {
         if (rbtnAlt1.isSelected() && p.validarResposta(rbtnAlt1.getText())) {
             qtdAcertos += 1;
         }
+        else if (rbtnAlt2.isSelected() && p.validarResposta(rbtnAlt2.getText())) {
+            qtdAcertos += 1;
+        }
+        else if (rbtnAlt3.isSelected() && p.validarResposta(rbtnAlt3.getText())) {
+            qtdAcertos += 1;
+        }
+        else if (rbtnAlt4.isSelected() && p.validarResposta(rbtnAlt4.getText())) {
+            qtdAcertos += 1;
+        }
+        //removeAll();
         perguntasAreas.remove(indicePergunta);
-        removeAll();
-        proximaPergunta();
+        if (!perguntasAreas.isEmpty()){
+            proximaPergunta();
+        }
+        else{
+            gerarResultado();
+            
+        }
     }
     
     private void voltarTelaAnterior() {
@@ -193,7 +229,7 @@ public class TelaPergunta extends JFrame {
     }
 
     private void proximaPergunta() {
-        indicePergunta = getPergunta();
+        /*indicePergunta = getPergunta();
         p = perguntasAreas.get(indicePergunta);
         imagem = new ImageIcon(p.getCaminhoImagem());
         lbImagem.setIcon(imagem);
@@ -203,7 +239,16 @@ public class TelaPergunta extends JFrame {
         rbtnAlt2.setText(alternativas[1]);
         rbtnAlt3.setText(alternativas[2]);
         rbtnAlt4.setText(alternativas[3]);
-        
+        */
+        TelaPergunta tp = new TelaPergunta("Areas", perguntasAreas);
+        setVisible(false);
+        tp.setVisible(true);
+    }
+
+    private void gerarResultado() {
+        TelaResultado tr = new TelaResultado(qtdAcertos, 6);
+        setVisible(false);
+        tr.setVisible(true);
     }
     
 }

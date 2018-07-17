@@ -66,7 +66,7 @@ public class TelaResultado extends JFrame{
         lbAproveitamento = new JLabel("Você obteve " + aproveitamento + "% de aproveitamento");
         
         btnRefazer =  new JButton("Refazer teste");
-        btnRefazer.setBackground(Color.RED);
+        btnRefazer.setBackground(Color.BLUE);
         btnRefazer.setForeground(Color.WHITE);
         btnRefazer.addActionListener(new ActionListener() {
             @Override
@@ -76,6 +76,8 @@ public class TelaResultado extends JFrame{
         });
         
         btnEncerrar = new JButton("Encerrar Teste");
+        btnEncerrar.setBackground(Color.RED);
+        btnEncerrar.setForeground(Color.WHITE);
         btnEncerrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

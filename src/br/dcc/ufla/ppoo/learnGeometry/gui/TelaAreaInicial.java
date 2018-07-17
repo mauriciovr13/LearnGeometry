@@ -112,7 +112,6 @@ public class TelaAreaInicial extends JFrame {
                 TelaPergunta tp = new TelaPergunta("Areas", perguntasAreas);
                 setVisible(false);
                 tp.setVisible(true);
-                System.out.println("a");
                 //tl.setVisible(true);
                 //construirTelaPerguntas();
             }
@@ -150,8 +149,7 @@ public class TelaAreaInicial extends JFrame {
     private void carregaPerguntas() {
         BufferedReader br = null;
         try {
-            //diretório sujeito a mudança para testes até que descubra o correto...
-            br = new BufferedReader(new FileReader("/home/spinelli/Documentos/Git/LearnGeometry/src/br/dcc/ufla/ppoo/learnGeometry/pergunta/perguntas/areas/perguntasAreas.txt"));
+            br = new BufferedReader(new FileReader((System.getProperty("user.dir") + "/src/br/dcc/ufla/ppoo/learnGeometry/pergunta/perguntas/areas/perguntasAreas.txt")));
             System.out.println("*");
             while (br.ready()) {
                 System.out.println("1");
@@ -161,11 +159,12 @@ public class TelaAreaInicial extends JFrame {
                 System.out.println("3");
                 int posCorreta = Integer.parseInt(br.readLine());
                 System.out.println("4");
-                String caminhoImagem = br.readLine();
+                String caminhoImagem = (System.getProperty("user.dir") + br.readLine());
                 System.out.println("5");
                 Pergunta p = new Pergunta(descricao, alternativas, posCorreta, caminhoImagem);
                 System.out.println("6");
                 perguntasAreas.add(p);
+                //System.out.println(p.getDescricao());
                 System.out.println("7");
             }
         } catch (IOException e) {
