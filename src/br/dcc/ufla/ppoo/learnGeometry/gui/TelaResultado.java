@@ -97,6 +97,7 @@ public class TelaResultado extends JFrame{
             }
         });
         JPanel panel = new JPanel(new GridLayout(1, 3));
+        //ajdklfja
         panel.add(btnRefazer);
         panel.add(btnEncerrar);
         panel.add(btnGabarito);
