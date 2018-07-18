@@ -192,6 +192,7 @@ public class TelaPergunta extends JFrame {
             continuar = false;
         }
         if (continuar){
+            ++qtdPerguntasRespondidas;
             escreverArquivoLog(log);
             perguntas.remove(indicePergunta);
             if (!perguntas.isEmpty()){
@@ -260,7 +261,7 @@ public class TelaPergunta extends JFrame {
 
     private void gerarResultado() {
         //pensar uma maneira de pegar a qtdPerguntas pra passar no construtor...
-        TelaResultado tr = new TelaResultado(qtdAcertos, 6);
+        TelaResultado tr = new TelaResultado(qtdAcertos, qtdPerguntasRespondidas);
         tr.setLocationRelativeTo(this);
         //setVisible(false);        
         this.dispose();

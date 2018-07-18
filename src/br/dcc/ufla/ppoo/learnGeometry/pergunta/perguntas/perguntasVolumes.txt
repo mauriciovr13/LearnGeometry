@@ -1,0 +1,60 @@
+<html>Qual a fórmula para calcular o volume de um cubo de<br>aresta A?</html>
+a) A³;b) 3A;c) 3A³;d) 2A³
+0
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>Qual é o volume de um cubo que tem 2,5 m de aresta?</html>
+a) 15,63 m³;b) 156,3 m³;c) 15,63 m³;d) 15 m³
+0
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>Qual é o volume ocupado por 50 caixas , em forma de<br>cubo, com 20 cm de aresta?</html>
+a) 40000 cm³;b) 400000 cm³;c) 400 cm³;d) 40000000 cm³
+1
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>(SAP SP – VUNESP 2011). Os produtos de uma empresa são<br>embalados em caixas cúbicas, com 20 cm de aresta. Para<br>transporte, essas embalagens são agrupadas, formando um<br>bloco retangular, conforme mostrado na figura. Sabe-se que<br>60 desses blocos preenchem totalmente o compartimento de<br>carga do veículo utilizado para o seu transporte. Pode-se<br>concluir, então, que o volume máximo, em metros cúbicos,<br>transportado por esse veículo é:</html>
+a) 4,96 m³;b) 5,76 m³;c) 7,25 m³;d) 8,76 m³
+1
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>Um estoquista, ao conferir a quantidade de determinado<br>produto embalado em caixas cúbicas de arestas medindo<br>40 cm, verificou que o estoque do produto estava empilhado<br>de acordo com a figura acima. Ao realizar corretamente os<br>cálculos do volume dessa pilha de caixas, o resultado<br>obtido foi:</html>
+a) 0,64 m³;b) 1,6 m³;c) 6,4 m³;d) 16 m³
+0
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>Sabe–se que o volume de um cubo de aresta α é dado por<br>α³. Considerando que a aresta de um cubo seja multiplicada<br>por 2, em quantas vezes seu volume aumentará?</html>
+a) Duas;b) Três;c) Quatro;d) Oito
+3
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>Um reservatório em formato cilíndrico possui raio igual<br>a 2 metros e sua altura é de 10 metros, como mostra a<br>imagem a seguir. Qual é o volume desse reservatório?<br>(considere π = 3,14).</html>
+a) 125,6 m³;b) 115,6 m³;c) 100,6 m³;d) 75,6 m³
+0
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>Um cilindro possui volume igual a 7850 cm3 e seu diâmetro<br>mede 10 centímetros. Qual é a medida da altura desse<br>cilindro? (Considere π = 3,14).</html>
+a) 50 cm;b) 100 cm;c) 120 cm;d) 150 cm
+1
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>Qual é o volume de um cilindro cuja altura é igual ao<br>dobro de seu raio.</html>
+a) πr³;b) 2r³;c) 2πr;d) 2πr³
+3
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>Qual a fórmula para calcular o volume do cilindro?</html>
+a) V = π∙r²;b) V = π∙r∙h;c) V = π∙r²∙h;d) V = π∙r²∙h²
+2
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>(Enem–2010) Uma fábrica produz barras de chocolates<br>no formato de paralelepípedos e de cubos, com o mesmo volume.<br>As arestas da barra de chocolate no formato de<br>paralelepípedo medem 3 cm de largura, 18 cm de comprimento e<br>4 cm de espessura. Analisando as características das figuras<br>geométricas descritas, a medida das arestas dos chocolates<br>que tem o formato de cubo é igual a</html>
+a) 5 cm;b) 6 cm;c) 12 cm;d) 24 cm
+1
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>(Enem-2009) Uma empresa que fabrica esferas de aço̧, de<br>6 cm de raio, utiliza caixas de madeira, na forma de um<br>cubo, para transportá-las. Sabendo que a capacidade da<br>caixa é de 13.824 cm3, então o número máximo de esferas<br>que podem ser transportadas em uma caixa é igual a</html>
+a) 4 cm³;b) 8 cm³;c) 16 cm³;d) 24 cm³
+1
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>Qual é o volume do prisma da imagem a seguir, sabendo<br>que ele é um prisma reto e sua base é quadrada?</html>
+a) 5760 cm³;b) 5000 cm³;c) 2500 cm³;d) 1080 cm³
+0
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>O volume de uma piscina em forma de prisma de base<br>retangular é 3125 metros cúbicos. Sabendo que a altura dessa<br>piscina é de 5 metros cúbicos, qual é a medida da aresta<br>de sua base em metros?</html>
+a) 5 m;b) 10 m;c) 15 m;d) 25 m
+3
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+<html>Como é obtido o volume do prisma?</html>
+a) AreaBase * h;b) AreaBase * h/2;c) AreaBase * h²;d) AreaBase * h/3
+0
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png

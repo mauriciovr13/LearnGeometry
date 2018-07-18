@@ -141,7 +141,7 @@ public class TelaTeoremaInicial extends JFrame {
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader((System.getProperty("user.dir")
-                    + "/src/br/dcc/ufla/ppoo/learnGeometry/pergunta/perguntas/teoremas/perguntasTeoremas.txt")));
+                    + "/src/br/dcc/ufla/ppoo/learnGeometry/pergunta/perguntas/perguntasTeoremas.txt")));
             while (br.ready()) {
                 String descricao = br.readLine();
                 String[] alternativas = br.readLine().split(";");

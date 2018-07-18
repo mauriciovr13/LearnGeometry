@@ -143,7 +143,7 @@ public class TelaVolumeInicial extends JFrame {
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader((System.getProperty("user.dir")
-                    + "/src/br/dcc/ufla/ppoo/learnGeometry/pergunta/perguntas/volumes/perguntasVolumes.txt")));
+                    + "/src/br/dcc/ufla/ppoo/learnGeometry/pergunta/perguntas/perguntasVolumes.txt")));
             while (br.ready()) {
                 String descricao = br.readLine();
                 String[] alternativas = br.readLine().split(";");
