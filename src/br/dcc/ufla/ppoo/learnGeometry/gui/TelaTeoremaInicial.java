@@ -64,8 +64,8 @@ public class TelaTeoremaInicial extends JFrame {
         // Abrindo a tela no centro do screen
         setLocationRelativeTo(null);
         
+        perguntasTeorema = new ArrayList<Pergunta>();
         // Lendo as perguntas de um arquivo de texto
-        carregaPerguntas();
         
     }
     
@@ -95,14 +95,28 @@ public class TelaTeoremaInicial extends JFrame {
         btnIniciar.setPreferredSize(new Dimension(150, 40));
         btnIniciar.setBackground(Color.GREEN);
         btnIniciar.setForeground(Color.WHITE);
+        btnIniciar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                //TelaResultado tl = new TelaResultado(25, 25); 
+                carregaPerguntas();
+                construirTelaPerguntas();
+            }
+        });
         
         adicionarComponente(lbTeorema, GridBagConstraints.WEST, GridBagConstraints.NONE, 0, 0, 4, 2);
         adicionarComponente(lbIntro, GridBagConstraints.WEST, GridBagConstraints.BOTH, 2, 0, 2, 2);
         adicionarComponente(btnVoltar, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 0, 1, 2);
         adicionarComponente(btnIniciar, GridBagConstraints.WEST, GridBagConstraints.NONE, 6, 0, 1, 2);
 
-        
-        
+    }
+    
+    private void construirTelaPerguntas() {
+        TelaPergunta tp = new TelaPergunta("Teoremas", perguntasTeorema);
+        tp.setLocationRelativeTo(this);
+        setVisible(false);
+        tp.setVisible(true);
+        //dispose();
     }
     
     private void reabrirTelaAnterior() {
@@ -126,12 +140,13 @@ public class TelaTeoremaInicial extends JFrame {
     private void carregaPerguntas() {
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("perguntasAreas.txt"));
+            br = new BufferedReader(new FileReader((System.getProperty("user.dir")
+                    + "/src/br/dcc/ufla/ppoo/learnGeometry/pergunta/perguntas/teoremas/perguntasTeoremas.txt")));
             while (br.ready()) {
                 String descricao = br.readLine();
                 String[] alternativas = br.readLine().split(";");
                 int posCorreta = Integer.parseInt(br.readLine());
-                String caminhoImagem = br.readLine();
+                String caminhoImagem = (System.getProperty("user.dir") + br.readLine());
                 Pergunta p = new Pergunta(descricao, alternativas, posCorreta, caminhoImagem);
                 perguntasTeorema.add(p);
             }

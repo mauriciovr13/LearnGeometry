@@ -96,17 +96,17 @@ public class TelaResultado extends JFrame{
                 mostrarGabarito();
             }
         });
-        JPanel panel = new JPanel(new GridLayout(1, 3));
+        JPanel painel = new JPanel(new GridLayout(1, 3, 15, 15));
         //ajdklfja
-        panel.add(btnRefazer);
-        panel.add(btnEncerrar);
-        panel.add(btnGabarito);
+        painel.add(btnRefazer);
+        painel.add(btnEncerrar);
+        painel.add(btnGabarito);
         
         
         adicionarComponente(lbTexto, GridBagConstraints.WEST, GridBagConstraints.BOTH, 0, 0, 4, 2);
         adicionarComponente(lbresultado, GridBagConstraints.WEST, GridBagConstraints.BOTH, 2, 0, 1, 1);
         adicionarComponente(lbAproveitamento, GridBagConstraints.WEST, GridBagConstraints.BOTH, 3, 0, 1, 1);
-        adicionarComponente(panel, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 0, 1, 1);
+        adicionarComponente(painel, GridBagConstraints.CENTER, GridBagConstraints.NONE, 4, 0, 2, 1);
         /*adicionarComponente(btnRefazer, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 0, 1, 1);
         adicionarComponente(btnEncerrar, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 1, 1, 1);
         adicionarComponente(btnGabarito, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 2, 1, 1);*/

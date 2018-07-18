@@ -149,7 +149,8 @@ public class TelaAreaInicial extends JFrame {
     private void carregaPerguntas() {
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader((System.getProperty("user.dir") + "/src/br/dcc/ufla/ppoo/learnGeometry/pergunta/perguntas/areas/perguntasAreas.txt")));
+            br = new BufferedReader(new FileReader((System.getProperty("user.dir")
+                    + "/src/br/dcc/ufla/ppoo/learnGeometry/pergunta/perguntas/areas/perguntasAreas.txt")));
             System.out.println("*");
             while (br.ready()) {
                 System.out.println("1");

@@ -42,7 +42,7 @@ public class TelaPergunta extends JFrame {
     public int qtdPerguntasRespondidas = 0;
     public int qtdAcertos = 0;
     
-    private ArrayList<Pergunta> perguntasAreas;
+    private ArrayList<Pergunta> perguntas;
     private Pergunta p;
     private int indicePergunta;
     
@@ -59,9 +59,9 @@ public class TelaPergunta extends JFrame {
     private JButton btnFinalizarTeste;
     private ButtonGroup group;
 
-    public TelaPergunta(String string, ArrayList<Pergunta> perguntasAreas) {
+    public TelaPergunta(String string, ArrayList<Pergunta> perguntas) {
         super(string);
-        this.perguntasAreas = perguntasAreas;
+        this.perguntas = perguntas;
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -85,18 +85,17 @@ public class TelaPergunta extends JFrame {
         //instância um objeto da classe Random usando o construtor básico
         Random gerador = new Random();
         //obtem um indice para o vetor de pergutas
-        return gerador.nextInt(perguntasAreas.size());
+        return gerador.nextInt(perguntas.size());
     
     }
 
     private void construirTela() {
-        System.out.println("oi");
         gbc = new GridBagConstraints();
         gbl = new GridBagLayout();
         setLayout(gbl);
         
         indicePergunta = getPergunta();
-        p = perguntasAreas.get(indicePergunta);
+        p = perguntas.get(indicePergunta);
         
         imagem = new ImageIcon(p.getCaminhoImagem());//é mesmo necessário?
         lbImagem = new JLabel(new ImageIcon(p.getCaminhoImagem()));
@@ -194,6 +193,7 @@ public class TelaPergunta extends JFrame {
     
     private void verificaPergunta() {
         String log = null;
+        Boolean continuar = true;
         if (rbtnAlt1.isSelected()) {
             int i = p.getResposta();
             log = p.getAlternativaIndex(i) + ";" + rbtnAlt1.getText() + "\n";
@@ -222,16 +222,20 @@ public class TelaPergunta extends JFrame {
                 qtdAcertos += 1;
             }
         }
-
-        escreverArquivoLog(log);
-        //removeAll();
-        perguntasAreas.remove(indicePergunta);
-        if (!perguntasAreas.isEmpty()){
-            proximaPergunta();
-        }
         else{
-            gerarResultado();
-            
+            JOptionPane.showMessageDialog(this, "É necessário escolher uma resposta!",
+                                "Learn Geometry", JOptionPane.ERROR_MESSAGE);
+            continuar = false;
+        }
+        if (continuar){
+            escreverArquivoLog(log);
+            perguntas.remove(indicePergunta);
+            if (!perguntas.isEmpty()){
+                proximaPergunta();
+            }
+            else{
+                gerarResultado();   
+            }
         }
     }
     
@@ -273,7 +277,7 @@ public class TelaPergunta extends JFrame {
 
     private void proximaPergunta() {
         indicePergunta = getPergunta();
-        p = perguntasAreas.get(indicePergunta);
+        p = perguntas.get(indicePergunta);
         imagem = new ImageIcon(p.getCaminhoImagem());
         lbImagem.setIcon(imagem);
         lbPergunta.setText(p.getDescricao());

@@ -68,9 +68,8 @@ public class TelaVolumeInicial extends JFrame {
         // Abrindo a tela no centro do screen
         setLocationRelativeTo(null);
         
-        
+        perguntasVolume = new ArrayList<Pergunta>();
         //lendo as perguntas de um arquivo texto
-        carregaPerguntas();
     }
     
     private void construirTela() {
@@ -99,6 +98,14 @@ public class TelaVolumeInicial extends JFrame {
         btnIniciar.setPreferredSize(new Dimension(100, 40));
         btnIniciar.setBackground(Color.GREEN);
         btnIniciar.setForeground(Color.WHITE);
+        btnIniciar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                //TelaResultado tl = new TelaResultado(25, 25); 
+                carregaPerguntas();
+                construirTelaPerguntas();
+            }
+        });
         
         adicionarComponente(lbVolume, GridBagConstraints.WEST, GridBagConstraints.NONE, 0, 0, 1, 1);
         adicionarComponente(lbIntro, GridBagConstraints.WEST, GridBagConstraints.BOTH, 1, 0, 1, 1);
@@ -107,6 +114,14 @@ public class TelaVolumeInicial extends JFrame {
         
     }
     
+    private void construirTelaPerguntas() {
+        TelaPergunta tp = new TelaPergunta("Volumes", perguntasVolume);
+        tp.setLocationRelativeTo(this);
+        setVisible(false);
+        tp.setVisible(true);
+        //dispose();
+    }
+                
     private void reabrirTelaAnterior() {
         this.dispose();
         TelaAssunto.getInstancia().setVisible(true);        
@@ -127,12 +142,13 @@ public class TelaVolumeInicial extends JFrame {
     private void carregaPerguntas() {
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("perguntasAreas.txt"));
+            br = new BufferedReader(new FileReader((System.getProperty("user.dir")
+                    + "/src/br/dcc/ufla/ppoo/learnGeometry/pergunta/perguntas/volumes/perguntasVolumes.txt")));
             while (br.ready()) {
                 String descricao = br.readLine();
                 String[] alternativas = br.readLine().split(";");
                 int posCorreta = Integer.parseInt(br.readLine());
-                String caminhoImagem = br.readLine();
+                String caminhoImagem = (System.getProperty("user.dir") + br.readLine());
                 Pergunta p = new Pergunta(descricao, alternativas, posCorreta, caminhoImagem);
                 perguntasVolume.add(p);
             }
