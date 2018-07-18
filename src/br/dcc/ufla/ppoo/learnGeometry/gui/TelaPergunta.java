@@ -100,47 +100,12 @@ public class TelaPergunta extends JFrame {
         imagem = new ImageIcon(p.getCaminhoImagem());//é mesmo necessário?
         lbImagem = new JLabel(new ImageIcon(p.getCaminhoImagem()));
         lbPergunta = new JLabel(p.getDescricao());
+        
         String[] alternativas = p.getAlternativas();
         rbtnAlt1 = new JRadioButton(alternativas[0]);
-        /*rbtnAlt1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                rbtnAlt2.setSelected(false);
-                rbtnAlt3.setSelected(false);
-                rbtnAlt4.setSelected(false);
-            }
-        });*/
-        
         rbtnAlt2 = new JRadioButton(alternativas[1]);
-        /*rbtnAlt2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                rbtnAlt1.setSelected(false);
-                rbtnAlt3.setSelected(false);
-                rbtnAlt4.setSelected(false);
-            }
-        });*/
-        
         rbtnAlt3 = new JRadioButton(alternativas[2]);
-        /*rbtnAlt3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                rbtnAlt1.setSelected(false);
-                rbtnAlt2.setSelected(false);
-                rbtnAlt4.setSelected(false);
-                
-            }
-        });*/
-        
         rbtnAlt4 = new JRadioButton(alternativas[3]);
-        /*rbtnAlt4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                rbtnAlt1.setSelected(false);
-                rbtnAlt2.setSelected(false);
-                rbtnAlt3.setSelected(false);
-            }
-        });*/
         
         group = new ButtonGroup();
         group.add(rbtnAlt1);
@@ -148,14 +113,15 @@ public class TelaPergunta extends JFrame {
         group.add(rbtnAlt3);
         group.add(rbtnAlt4);
         
-        JPanel radioPanel = new JPanel(new GridLayout(3, 2));
         JPanel radioPanel1 = new JPanel(new GridLayout(2, 1));
+        JPanel radioPanel2 = new JPanel(new GridLayout(3, 2));
         radioPanel1.add(lbImagem);
         radioPanel1.add(lbPergunta);
-        radioPanel.add(rbtnAlt1);
-        radioPanel.add(rbtnAlt2);
-        radioPanel.add(rbtnAlt3);
-        radioPanel.add(rbtnAlt4);
+        radioPanel2.add(rbtnAlt1);
+        radioPanel2.add(rbtnAlt2);
+        radioPanel2.add(rbtnAlt3);
+        radioPanel2.add(rbtnAlt4);
+        
         btnVoltar = new JButton("Voltar");
         if (qtdPerguntasRespondidas == 0) {
             btnVoltar.setEnabled(true);
@@ -169,6 +135,7 @@ public class TelaPergunta extends JFrame {
                 voltarTelaAnterior();
             }
         });
+        
         btnPular = new JButton("Pular");
         
         btnProximo = new JButton("Proximo");
@@ -183,11 +150,8 @@ public class TelaPergunta extends JFrame {
             }
         });
         
-        //adicionarComponente(lbImagem, GridBagConstraints.CENTER, GridBagConstraints.NONE, 0, 0, 3, 3);
-        //adicionarComponente(lbPergunta, GridBagConstraints.WEST, GridBagConstraints.NONE, 3, 0, 1, 1);
         adicionarComponente(radioPanel1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 0, 0, 4, 4);
-        adicionarComponente(radioPanel, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 4, 0, 4, 4);
-        //adicionarComponente(btnProximo, GridBagConstraints.EAST, GridBagConstraints.BOTH, 8, 0, 4, 1);
+        adicionarComponente(radioPanel2, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 4, 0, 4, 4);
                 
     }
     
