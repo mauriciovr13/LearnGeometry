@@ -142,7 +142,7 @@ public class TelaPergunta extends JFrame {
         btnProximo.setPreferredSize(new Dimension(150, 40));
         btnProximo.setBackground(Color.GREEN);
         btnProximo.setForeground(Color.WHITE);
-        radioPanel.add(btnProximo);
+        radioPanel2.add(btnProximo);
         btnProximo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
