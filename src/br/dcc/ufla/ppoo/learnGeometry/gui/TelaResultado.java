@@ -18,6 +18,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/** Classe TelaResultado, mostra o número e a porcentagem de acertos.
+ * Learn Geometry
+ * GCC178 - Práticas de Programação Orientada a Objetos
+ * UFLA - Universidade Federal de Lavras
+ * @author Maurício Vieira, Pedro Pio e Vinicius Spinelli
+ */
+
 public class TelaResultado extends JFrame{
     
     private GridBagConstraints gbc;

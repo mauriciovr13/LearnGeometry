@@ -24,6 +24,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/** Classe TelaGabarito, apresenta o gabarito dos exercícios.
+ * Learn Geometry
+ * GCC178 - Práticas de Programação Orientada a Objetos
+ * UFLA - Universidade Federal de Lavras
+ * @author Maurício Vieira, Pedro Pio e Vinicius Spinelli
+ */
+
 public class TelaGabarito extends JFrame {
     
     private GridBagLayout gbl;

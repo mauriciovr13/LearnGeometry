@@ -22,6 +22,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+/** Classe TelaAreaInicial, que inicia os exercícios sobre áreas.
+ * Learn Geometry
+ * GCC178 - Práticas de Programação Orientada a Objetos
+ * UFLA - Universidade Federal de Lavras
+ * @author Maurício Vieira, Pedro Pio e Vinicius Spinelli
+ */
+
 public class TelaAreaInicial extends JFrame {
     
     private static TelaAreaInicial instancia = null;

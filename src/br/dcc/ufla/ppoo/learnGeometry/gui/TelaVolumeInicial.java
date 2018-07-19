@@ -22,6 +22,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+/** Classe TelaVolumeInicial, que inicia os exercícios sobre volumes.
+ * Learn Geometry
+ * GCC178 - Práticas de Programação Orientada a Objetos
+ * UFLA - Universidade Federal de Lavras
+ * @author Maurício Vieira, Pedro Pio e Vinicius Spinelli
+ */
+
 public class TelaVolumeInicial extends JFrame {
     
     private static TelaVolumeInicial instancia = null;

@@ -17,6 +17,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/** Classe TelaPrincipal, página inicial que se inicia o programa.
+ * Learn Geometry
+ * GCC178 - Práticas de Programação Orientada a Objetos
+ * UFLA - Universidade Federal de Lavras
+ * @author Maurício Vieira, Pedro Pio e Vinicius Spinelli
+ */
+
 public class TelaPrincipal extends JFrame {
     
     private static TelaPrincipal instancia = null;
