@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
 import java.awt.Color;
@@ -11,19 +6,18 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.HeadlessException;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.net.URL;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Maurício Vieira
- */
 public class TelaResultado extends JFrame{
     
     private GridBagConstraints gbc;
@@ -47,15 +41,16 @@ public class TelaResultado extends JFrame{
         // Invoca o método que efetivamente constrói a tela
         construirTela(qtdAcertos, qtdPerguntas);
 
-        // Seta o tamanho padrão da tela
         setSize(750, 650);
         
-        // Redimensiona automaticamente a tela, com base nos componentes existentes na mesma
-        //pack();
+        // Abrindo a tela no centro do screen
+        setLocationRelativeTo(null);
     }
 
     private void construirTela(int qtdAcertos, int qtdPerguntas) {
-        
+        URL url = this.getClass().getResource("../imagens/LearnGeometry.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
         gbc = new GridBagConstraints();
         gbl = new GridBagLayout();
         setLayout(gbl);
@@ -84,6 +79,8 @@ public class TelaResultado extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 criarTelaAssunto();
+                File f = new File("log.txt");
+                f.delete();
             }
         });
         
@@ -97,7 +94,6 @@ public class TelaResultado extends JFrame{
             }
         });
         JPanel painel = new JPanel(new GridLayout(1, 3, 15, 15));
-        //ajdklfja
         painel.add(btnRefazer);
         painel.add(btnEncerrar);
         painel.add(btnGabarito);
@@ -107,9 +103,6 @@ public class TelaResultado extends JFrame{
         adicionarComponente(lbresultado, GridBagConstraints.WEST, GridBagConstraints.BOTH, 2, 0, 1, 1);
         adicionarComponente(lbAproveitamento, GridBagConstraints.WEST, GridBagConstraints.BOTH, 3, 0, 1, 1);
         adicionarComponente(painel, GridBagConstraints.CENTER, GridBagConstraints.NONE, 4, 0, 2, 1);
-        /*adicionarComponente(btnRefazer, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 0, 1, 1);
-        adicionarComponente(btnEncerrar, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 1, 1, 1);
-        adicionarComponente(btnGabarito, GridBagConstraints.WEST, GridBagConstraints.NONE, 4, 2, 1, 1);*/
         
     }
     
@@ -142,10 +135,6 @@ public class TelaResultado extends JFrame{
         tg.setLocationRelativeTo(this);
         this.dispose();
         tg.setVisible(true);
-        //construir a tela de gabarito
-        //lendo um txt
     }
-    
-    
-    
+
 }

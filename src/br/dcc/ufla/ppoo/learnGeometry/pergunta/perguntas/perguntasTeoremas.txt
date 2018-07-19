@@ -1,60 +1,60 @@
 <html>Um avião percorreu a distância de 5 000 metros na posição<br>inclinada, e em relação ao solo, percorreu 3 000 m.<br>Determine a altura do avião.</html>
 a) 400 m;b) 4000 m;c) 4500 m;d) 450 m
 1
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/a.png
 <html>Do topo de uma torre, três cabos de aço estão ligados à<br>superfície por meio de ganchos, dando sustentabilidade<br>à torre. Sabendo que a medida de cada cabo é de 30 metros<br>e que a distância dos ganchos até à base da torre é de<br>15 metros, determine a medida de sua altura.</html>
 a) 26 m;b) 260 m;c) 675 m;d) 67,5 m
 0
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/a.png
 <html>Do topo de uma torre, três cabos de aço estão ligados à<br>superfície por meio de ganchos, dando sustentabilidade<br>à torre. Sabendo que a medida de cada cabo é de 30 metros<br>e que a distância dos ganchos até à base da torre é de<br>15 metros, determine a medida de sua altura.</html>
 a) 80 m;b) 8 m;c) 8,94 m;d) 89,4 m
 2
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/a.png
 <html>Calcule a metragem de arame utilizado para cercar um<br>terreno triangular com as medidas perpendiculares de 60 e<br>80 metros, considerando que a cerca de arame terá 4 fios. </html>
 a) 100 m;b) 240 m;c) 960 m;d) 24m
 2
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/a.png
 <html>Determine o valor de x e de y na figura abaixo sabendo<br>que o segmento DE é paralelo à base do triângulo.</html>
 a) x = 2 e y = 2,4;b) x = 2,4 e y = 2;c) x = 20 e y = 2,4;d) x = 2 e y = 24
 1
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/q5Teo.png
 <html>Sabendo que DE é paralelo a AC, determine o valor de x.</html>
 a) x = 2;b) x = 3;c) x=  20;d) x = 30
 0
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/q6Teo.png
 <html>Na figura abaixo, AD = 1, AB = a , AE = b e os segmentos<br>DE e BC são paralelos. Com base nessas informações, é<br>CORRETO afirmar que AC vale:</html>
 a) a/  b;b) b/a;c) a + b;d) ab
 3
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/q7Teo.png
 <html>Se duas retas são transversais de um feixe de retas<br>paralelas, então a razão(divisão) entre dois segmentos<br>quaisquer de uma delas é igual à razão entre os segmentos<br>correspondentes da outra. Que teorema é esse?</html>
 a) Pitágoras;b) Talles;c) Aristóteles;d) Semelhança de triângulos
 1
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/a.png
 <html>Dois triângulos são semelhantes quando seus lados correspondentes são proporcionais e seus ângulos, em ordem, são congruentes.Que teorema é esse?</html>
 a) Pitágoras;b) Talles;c) Aristóteles;d) Semelhança de triângulos
 3
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/a.png
 <html>O quadrado da hipotenusa é igual à soma dos quadrados<br>dos catetos.Que teorema é esse?</html>
 a) Pitágoras;b) Talles;c) Aristóteles;d) Semelhança de triângulos
 0
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/a.png
 <html>Calcule o valor de x, sabendo que as retas “e” “f” e “a”<br>são paralelas.</html>
 a) 270 cm;b) 37,5 cm;c) 27 cm;d) 375 cm
 1
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/q11Teo.png
 <html>Sabendo que as retas “a”, “b” e “c” são paralelas, calcule<br>o valor de y.</html>
 a) 24 m;b) 240 m;c) 192 m;d) 19,2 m
 0
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/q12Teo.png
 <html>Na figura acima as retas r e s são paralelas e cortadas<br>pelas transversais m e n. Se AB = 2x – 5 cm; BC = x2 cm;<br>BY = 5 cm e BX = 1 cm - então a medida de XY, em cm, é:</html>
 a) 25 cm;b) 5 cm;c) 20 cm;d) 6 cm
 3
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/q13_14_15Teo.gif
 <html>Na figura acima as retas r e s são paralelas e cortadas<br>pelas transversais m e n. Se AB = 2 cm; AC = 12 cm e<br>BY = 15 cm - então a medida de XY, em cm, é:</html>
 a) 10 cm;b) 18 cm;c) 20 cm;d) 5 cm
 1
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/q13_14_15Teo.gif
 <html>Na figura acima as retas r e s são paralelas e cortadas<br>pelas transversais m e n. Se AB = 2 cm; BC = 10 cm e<br>BY = 15 cm - então a medida de XY, em cm, é:</html>
 a) 10 cm;b) 18 cm;c) 20 cm;d) 5 cm
 1
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/teoremas/q13_14_15Teo.gif

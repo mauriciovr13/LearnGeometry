@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
 import java.awt.Color;
@@ -12,18 +7,16 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-/**
- *
- * @author Maurício Vieira, Vinicius Spinelli e Pedro Pio
- */
 public class TelaAssunto extends JFrame {
     
     private static TelaAssunto instancia = null;
@@ -56,14 +49,17 @@ public class TelaAssunto extends JFrame {
         // Invoca o método que efetivamente constrói a tela
         construirTela();
 
-        // Inicia o relógio da tela
-        //iniciarRelogio();
         setSize(750, 650);
-        // Redimensiona automaticamente a tela, com base nos componentes existentes na mesma
-        //pack();
+        
+        // Abrindo a tela no centro do screen
+        setLocationRelativeTo(null);
+        
     }
     
     private void construirTela() {
+        URL url = this.getClass().getResource("../imagens/LearnGeometry.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
         gbc = new GridBagConstraints();
         gbl = new GridBagLayout();
         setLayout(gbl);
@@ -103,7 +99,6 @@ public class TelaAssunto extends JFrame {
                 criarTelaTeorema();
             }
         });
-        
         
         adicionarComponente(lbTexto, GridBagConstraints.WEST, GridBagConstraints.NONE, 0, 0, 5, 1);
         adicionarComponente(btnArea, GridBagConstraints.WEST, GridBagConstraints.BOTH, 5, 0, 2, 2);

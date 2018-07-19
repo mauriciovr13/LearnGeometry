@@ -1,23 +1,23 @@
 <html>A fórmula para calcular a área do quadrado é:</html>
 a) L*L/2;b) L * h;c) L²;d) L/h
 2
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/quadrado.png
 <html>Qual a area do circulo?</html>
 a) πR²;b) 2πR;c) π*(r/2)²;d) 4πR²
 0
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/circulo.png
 <html>Determine a área de uma sala quadrada, sabendo que a<br>medida de seu lado é 6,45 m.</html>
 a) 41,60 m;b) 27,80 m;c) 42,90 m;d) 416,02 m
 0
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/quadrado.png
 <html>Vamos calcular a área de uma praça retangular, em que<br>o comprimento é igual a 50 m e sua largura mede 35,6 m.</html>
 a) 1712,0 m;b) 171,2 m;c) 178,0 m;d) 1780,0 m
 3
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/retangulo.png
 <html>Calcule a área de um retângulo, em que a base mede 34<br>cm e sua altura mede a metade da base.</html>
 a) 2312,0 cm;b) 578 cm;c) 102 cm;d) 231,2 cm
 1
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/retangulo.png
 <html>Quantos metros de tecido, no mínimo, são necessários<br>para fazer uma toalha para uma mesa que mede 300 cm de<br>comprimento por 230 cm de largura?</html>
 a) 6,9 cm;b) 690 cm;c) 69000 cm;d) 69 cm
 0
@@ -29,32 +29,32 @@ a) 5,5 cm;b) 11 cm;c) 55 cm;d) 32 cm
 <html>Vamos calcular a área de um losango, sabendo que sua<br>diagonal maior mede 5 cm e a diagonal menor mede 2,4 cm.</html>
 a) 12 cm;b) 6 cm;c) 60 cm;d) 120 cm
 1
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/losango.png
 <html>Sabendo que a base maior de um trapézio mede 12 cm,<br>base menor mede 3,4 cm e sua altura mede 5 cm. Calcule a<br>área deste trapézio.</html>
 a) 77 cm;b) 38,5 cm;c) 102 cm;d) 77,5 cm
 1
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/trapezio.png
 <html>Determine a área de um triângulo cuja base mede 8cm e<br>cuja altura mede 5,2 cm.</html>
 a) 20.8 cm;b) 41,6 cm;c) 416 cm;d) 208 cm
 0
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/triangulo.png
 <html>Em um paralelogramo, a base mede 10 cm. Sabendo que a<br>medida da altura é a metade da medida da base, determine<br>a área desse paralelogramo.</html>
 a) 25 cm;b) 250 cm;c) 50 cm;d) 500 cm
 2
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/paralelogramo.png
 <html>A base de um triângulo mede 18 cm. A medida da altura é<br>igual a 2/3 da medida da base. Qual a área desse triângulo?</html>
 a) 108 cm;b) 1080 cm;c) 216 cm;d) 2160 cm
 0
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/triangulo.png
 <html>Um vitral é composto de 80 peças triangulares iguais,<br>de base 25cm e altura 16 cm.Qual é, em metros quadrados,<br>a área desse vitral?</html>
 a) 16000 cm;b) 1,6 cm;c) 0,2 cm;d) 200 cm
 1
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/vitral.png
 <html>A fórmula para calcular a área do triângulo é:</html>
 a) b * h;b) b * h * 2;c) b * h /2;d) b * h²
 2
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/retangulo.png
 <html>A fórmula para calcular a área do retângulo é:</html>
 a) b * h;b) b * h * 2;c) b * h /2;d) b * h²
 0
-/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/a.png
+/src/br/dcc/ufla/ppoo/learnGeometry/imagens/perguntas/areas/retangulo.png

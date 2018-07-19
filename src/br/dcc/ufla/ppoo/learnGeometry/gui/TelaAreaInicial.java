@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
 import br.dcc.ufla.ppoo.learnGeometry.pergunta.Pergunta;
@@ -10,28 +5,23 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.HeadlessException;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.event.AncestorListener;
 
-/**
- *
- * @author aluno
- */
 public class TelaAreaInicial extends JFrame {
     
     private static TelaAreaInicial instancia = null;
@@ -68,19 +58,20 @@ public class TelaAreaInicial extends JFrame {
         // Invoca o método que efetivamente constrói a tela
         construirTela();
 
-        // Inicia o relógio da tela
-        //iniciarRelogio();
         setSize(750, 650);
-        // Redimensiona automaticamente a tela, com base nos componentes existentes na mesma
-        //pack();
+        
+        // Abrindo a tela no centro do screen
+        setLocationRelativeTo(null);
         
         //Metodo que ler o arquivo texto com as perguntas sobre area
         perguntasAreas = new ArrayList<Pergunta>();
-        //carregaPerguntas();        
-        
+                
     }
     
     private void construirTela() {
+        URL url = this.getClass().getResource("../imagens/LearnGeometry.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
         gbl = new GridBagLayout();
         gbc = new GridBagConstraints();
         setLayout(gbl);
@@ -108,7 +99,6 @@ public class TelaAreaInicial extends JFrame {
         btnIniciar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //TelaResultado tl = new TelaResultado(25, 25); 
                 carregaPerguntas();
                 construirTelaPerguntas();
             }
@@ -122,11 +112,10 @@ public class TelaAreaInicial extends JFrame {
     }
     
     private void construirTelaPerguntas() {
-        TelaPergunta tp = new TelaPergunta("Areas", perguntasAreas);
+        TelaPergunta tp = new TelaPergunta(this.getTitle(), perguntasAreas);
         tp.setLocationRelativeTo(this);
         setVisible(false);
         tp.setVisible(true);
-        //dispose();
     }
     
     private void reabrirTelaAnterior() {
@@ -151,22 +140,13 @@ public class TelaAreaInicial extends JFrame {
         try {
             br = new BufferedReader(new FileReader((System.getProperty("user.dir")
                     + "/src/br/dcc/ufla/ppoo/learnGeometry/pergunta/perguntas/perguntasAreas.txt")));
-            System.out.println("*");
             while (br.ready()) {
-                System.out.println("1");
                 String descricao = br.readLine();
-                System.out.println("2");
                 String[] alternativas = br.readLine().split(";");
-                System.out.println("3");
                 int posCorreta = Integer.parseInt(br.readLine());
-                System.out.println("4");
                 String caminhoImagem = (System.getProperty("user.dir") + br.readLine());
-                System.out.println("5");
                 Pergunta p = new Pergunta(descricao, alternativas, posCorreta, caminhoImagem);
-                System.out.println("6");
                 perguntasAreas.add(p);
-                //System.out.println(p.getDescricao());
-                System.out.println("7");
             }
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "O arquivo que contem as perguntas não foi encontrado!");

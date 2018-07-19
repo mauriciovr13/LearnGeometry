@@ -1,42 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author aluno
- */
 public class TelaGabarito extends JFrame {
     
     private GridBagLayout gbl;
     private GridBagConstraints gbc;    
     
-    private JPanel painel;
+    private JPanel painel1;
+    private JPanel painel2;
+    private JLabel gabarito;
     private JLabel[] respostas;
+    private JButton btnRefazer;
     private JButton btnFinalizar;
 
     public TelaGabarito(String string) throws HeadlessException {
@@ -52,18 +49,33 @@ public class TelaGabarito extends JFrame {
         // Invoca o método que efetivamente constrói a tela
         construirTela();
 
-        // Inicia o relógio da tela
-        //iniciarRelogio();
         setSize(750, 650);
-        // Redimensiona automaticamente a tela, com base nos componentes existentes na mesma
-        //pack();
+        
+        // Abrindo a tela no centro do screen
+        setLocationRelativeTo(null);
 
     }
 
     private void construirTela() {
+        URL url = this.getClass().getResource("../imagens/LearnGeometry.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
         gbc = new GridBagConstraints();
         gbl = new GridBagLayout();
         setLayout(gbl);
+        
+        gabarito = new JLabel("Gabarito:");
+        gabarito.setFont(new Font("Courier", Font.PLAIN, 20));
+        
+        btnRefazer =  new JButton("Refazer teste");
+        btnRefazer.setBackground(Color.GREEN);
+        btnRefazer.setForeground(Color.WHITE);
+        btnRefazer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                telaRefazerTeste();
+            }
+        });
         
         btnFinalizar = new JButton("Finalizar Teste");
         btnFinalizar.setBackground(Color.BLUE);
@@ -80,7 +92,7 @@ public class TelaGabarito extends JFrame {
         ArrayList<String> resp = lerLog();
         
         respostas = new JLabel[resp.size()];
-        painel = new JPanel(new GridLayout(10, 10, 10, 10));
+        painel1 = new JPanel(new GridLayout(10, 10, 10, 10));
         for (int i = 0; i < resp.size(); i++) {
             String[] resp1 = resp.get(i).split(";");
             resp1[0] = (i+1) + "- " + resp1[0].substring(2);
@@ -90,22 +102,22 @@ public class TelaGabarito extends JFrame {
             if (resp1[0].equals(resp1[1])) {
                 respostas[i].setBackground(Color.GREEN);
                 respostas[i].setOpaque(true);
-                //respostas[i].setForeground(Color.yellow);
             }
             else {
                 respostas[i].setText(resp1[0]);
                 respostas[i].setBackground(Color.RED);
                 respostas[i].setOpaque(true);
-                //respostas[i].setForeground(Color.yellow);
             }
-            painel.add(respostas[i]);
+            painel1.add(respostas[i]);
         }
         
-        adicionarComponente(painel, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 0, 0, 5, 5);
-        adicionarComponente(btnFinalizar, GridBagConstraints.WEST, GridBagConstraints.NONE, 5, 0, 1, 2);
+        painel2 = new JPanel(new GridLayout(1, 2, 15, 15));
+        painel2.add(btnRefazer);
+        painel2.add(btnFinalizar);
         
-        
-        
+        adicionarComponente(gabarito, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 0, 0, 2, 1);
+        adicionarComponente(painel1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 1, 0, 5, 5);
+        adicionarComponente(painel2, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 6, 0, 1, 2);
         
     }
     
@@ -115,7 +127,6 @@ public class TelaGabarito extends JFrame {
         File f = new File("log.txt");
         int qtd = 0;
         try {
-            
             br = new BufferedReader(new FileReader(f));
             while (br.ready()) {
                 resp.add(br.readLine());
@@ -133,7 +144,13 @@ public class TelaGabarito extends JFrame {
             }
         }
         return resp;
-    }        
+    }
+    
+    private void telaRefazerTeste() {
+        TelaAreaInicial.getInstancia().setLocationRelativeTo(this);
+        this.dispose();
+        TelaAreaInicial.getInstancia().setVisible(true);
+    }
     
     private void adicionarComponente(Component comp, int anchor, int fill, int linha, int coluna, int larg, int alt) {
         gbc.anchor = anchor; // posicionamento do componente na tela (esquerda, direita, centralizado, etc)

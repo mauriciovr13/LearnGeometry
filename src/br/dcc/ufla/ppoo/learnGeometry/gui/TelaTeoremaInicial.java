@@ -7,12 +7,15 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -46,7 +49,6 @@ public class TelaTeoremaInicial extends JFrame {
         super(string);
         
         // Define que fechar a janela, a execução aplicação será encerrada
-        //setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Evita que a tela possa ser redimensionada pelo usuário
@@ -55,11 +57,7 @@ public class TelaTeoremaInicial extends JFrame {
         // Invoca o método que efetivamente constrói a tela
         construirTela();
 
-        // Inicia o relógio da tela
-        //iniciarRelogio();
         setSize(750, 650);
-        // Redimensiona automaticamente a tela, com base nos componentes existentes na mesma
-        //pack();
         
         // Abrindo a tela no centro do screen
         setLocationRelativeTo(null);
@@ -70,6 +68,9 @@ public class TelaTeoremaInicial extends JFrame {
     }
     
     private void construirTela() {
+        URL url = this.getClass().getResource("../imagens/LearnGeometry.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
         gbl = new GridBagLayout();
         gbc = new GridBagConstraints();
         setLayout(gbl);
@@ -98,7 +99,6 @@ public class TelaTeoremaInicial extends JFrame {
         btnIniciar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //TelaResultado tl = new TelaResultado(25, 25); 
                 carregaPerguntas();
                 construirTelaPerguntas();
             }
@@ -112,11 +112,10 @@ public class TelaTeoremaInicial extends JFrame {
     }
     
     private void construirTelaPerguntas() {
-        TelaPergunta tp = new TelaPergunta("Teoremas", perguntasTeorema);
+        TelaPergunta tp = new TelaPergunta(this.getTitle(), perguntasTeorema);
         tp.setLocationRelativeTo(this);
         setVisible(false);
         tp.setVisible(true);
-        //dispose();
     }
     
     private void reabrirTelaAnterior() {
@@ -162,7 +161,4 @@ public class TelaTeoremaInicial extends JFrame {
             }
         }
     }
-
-    
-
 }

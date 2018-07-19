@@ -1,24 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.dcc.ufla.ppoo.learnGeometry.gui;
 
 import br.dcc.ufla.ppoo.learnGeometry.pergunta.Pergunta;
+import br.dcc.ufla.ppoo.learnGeometry.excecao.RespostaNotSelectedException;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.HeadlessException;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ButtonGroup;
@@ -30,10 +31,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-/**
- *
- * @author aluno
- */
 public class TelaPergunta extends JFrame {
     
     private GridBagConstraints gbc;
@@ -63,6 +60,13 @@ public class TelaPergunta extends JFrame {
         super(string);
         this.perguntas = perguntas;
         
+        addWindowListener(new WindowAdapter(){
+            @Override
+            public void windowClosing(WindowEvent e){
+                confirmarSaida();
+            }
+        });
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Evita que a tela possa ser redimensionada pelo usuário
@@ -71,14 +75,20 @@ public class TelaPergunta extends JFrame {
         // Invoca o método que efetivamente constrói a tela
         construirTela();
 
-        // Inicia o relógio da tela
-        //iniciarRelogio();
         setSize(750, 650);
-        // Redimensiona automaticamente a tela, com base nos componentes existentes na mesma
-        //pack();
-        
+
         // Abrindo a tela no centro do screen
         setLocationRelativeTo(null);
+    }
+    
+    private void confirmarSaida(){
+        if (JOptionPane.YES_OPTION == 
+                JOptionPane.showConfirmDialog(this, "Deseja realmente sair do programa?", "Learn Geometry",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)){
+            File f = new File("log.txt");
+            f.delete();
+            System.exit(0);
+        }
     }
     
     private int getPergunta() {
@@ -90,6 +100,9 @@ public class TelaPergunta extends JFrame {
     }
 
     private void construirTela() {
+        URL url = this.getClass().getResource("../imagens/LearnGeometry.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
         gbc = new GridBagConstraints();
         gbl = new GridBagLayout();
         setLayout(gbl);
@@ -135,27 +148,30 @@ public class TelaPergunta extends JFrame {
                 voltarTelaAnterior();
             }
         });
-        
-        btnPular = new JButton("Pular");
-        
+                
         btnProximo = new JButton("Proximo");
         btnProximo.setPreferredSize(new Dimension(150, 40));
         btnProximo.setBackground(Color.GREEN);
         btnProximo.setForeground(Color.WHITE);
-        radioPanel2.add(btnProximo);
         btnProximo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                verificaPergunta();
+                try{
+                    verificaPergunta();
+                }catch (RespostaNotSelectedException ex){
+                    JOptionPane.showMessageDialog(null, ex.getMessage(),
+                            "Learn Geometry", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         
-        adicionarComponente(radioPanel1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 0, 0, 4, 4);
-        adicionarComponente(radioPanel2, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 4, 0, 4, 4);
+        adicionarComponente(radioPanel1, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 4, 0, 4, 4);
+        adicionarComponente(radioPanel2, GridBagConstraints.CENTER, GridBagConstraints.BOTH, 8, 0, 4, 4);
+        adicionarComponente(btnProximo, GridBagConstraints.EAST, GridBagConstraints.NONE, 12, 0, 4, 4);
                 
     }
     
-    private void verificaPergunta() {
+    private void verificaPergunta() throws RespostaNotSelectedException{
         String log = null;
         Boolean continuar = true;
         if (rbtnAlt1.isSelected()) {
@@ -187,20 +203,16 @@ public class TelaPergunta extends JFrame {
             }
         }
         else{
-            JOptionPane.showMessageDialog(this, "É necessário escolher uma resposta!",
-                                "Learn Geometry", JOptionPane.ERROR_MESSAGE);
-            continuar = false;
+            throw new RespostaNotSelectedException("É necessário escolher uma resposta!");
         }
-        if (continuar){
-            ++qtdPerguntasRespondidas;
-            escreverArquivoLog(log);
-            perguntas.remove(indicePergunta);
-            if (!perguntas.isEmpty()){
-                proximaPergunta();
-            }
-            else{
-                gerarResultado();   
-            }
+        ++qtdPerguntasRespondidas;
+        escreverArquivoLog(log);
+        perguntas.remove(indicePergunta);
+        if (!perguntas.isEmpty()){
+            proximaPergunta();
+        }
+        else{
+            gerarResultado();   
         }
     }
     
@@ -252,11 +264,6 @@ public class TelaPergunta extends JFrame {
         rbtnAlt3.setText(alternativas[2]);
         rbtnAlt4.setText(alternativas[3]);
         group.clearSelection();        
-        /*
-        TelaPergunta tp = new TelaPergunta("Areas", perguntasAreas);
-        setVisible(false);
-        tp.setVisible(true);
-        */
     }
 
     private void gerarResultado() {
