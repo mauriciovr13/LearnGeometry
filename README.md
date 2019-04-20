@@ -1,2 +1,2 @@
 # LearnGeometry
-Programa para auxiliar no aprendizado de geometria
+Geometry Learning Program
